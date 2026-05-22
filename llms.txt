@@ -25,4 +25,4 @@ Typography Studio is built and maintained by [CRUSH Design](https://www.crush-de
 ## Optional
 
 - [CRUSH Design website](https://www.crush-design.co.uk): the studio behind Typography Studio.
-- [Buy me a coffee](https://www.buymeacoffee.com/crushdesign): support continued development.
+- [Buy me a coffee](https://buymeacoffee.com/pigment.compendium): support continued development.
