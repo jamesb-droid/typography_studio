@@ -2,6 +2,8 @@
 
 > A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. Built by CRUSH Design.
 
+**Site:** https://www.typographystudio.co.uk/
+
 Typography Studio is a single-page web tool for designers and developers who need to design a responsive type system and verify its colour contrast against WCAG 2.1 accessibility standards. The tool runs entirely in the browser — there is no sign-in, and no user data is stored or transmitted.
 
 ## What it does

@@ -1,7 +1,7 @@
 # ============================================================
 # Typography Studio — robots.txt
 # Place this file at the root of your site, e.g.:
-# https://typography.crush-design.co.uk/robots.txt
+# https://www.typographystudio.co.uk/robots.txt
 # ============================================================
 
 # All general crawlers (Googlebot, Bingbot, etc.) — allowed.
@@ -59,4 +59,4 @@ Allow: /
 User-agent: Meta-ExternalFetcher
 Allow: /
 
-Sitemap: https://typography.crush-design.co.uk/sitemap.xml
+Sitemap: https://www.typographystudio.co.uk/sitemap.xml
