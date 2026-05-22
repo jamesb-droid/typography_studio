@@ -1,0 +1,2918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+     ⚠  GO-LIVE CHECKLIST — before deploying:
+     1. Search-replace https://typography.crush-design.co.uk/
+        below with your real production URL (canonical, og:url,
+        twitter, JSON-LD, sitemap reference).
+     2. Create a 1200×630 PNG Open Graph image and host it at
+        the og:image URL referenced below (recommended filename
+        og-image.png).
+     3. Also drop the companion llms.txt, robots.txt, and
+        sitemap.xml at the site root.
+     ============================================================ -->
+
+<title>Typography Studio — Live Web Type & WCAG Contrast Tool | CRUSH</title>
+<meta name="description" content="A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. 200+ Google Fonts and Adobe Fonts support. Export clean, mobile-first CSS or SCSS.">
+<meta name="keywords" content="typography tool, web typography, type scale, WCAG contrast checker, accessibility, Google Fonts, Adobe Fonts, responsive typography, CSS generator, SCSS export, font pairing, type tester, design tool">
+<meta name="author" content="CRUSH Design">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#FFE66D">
+<link rel="canonical" href="https://typography.crush-design.co.uk/">
+
+<!-- Open Graph (Facebook, LinkedIn, Slack, Discord, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CRUSH Design">
+<meta property="og:title" content="Typography Studio — Live Web Type & WCAG Contrast Tool">
+<meta property="og:description" content="A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. 200+ Google Fonts and Adobe Fonts support. Export clean CSS or SCSS.">
+<meta property="og:url" content="https://typography.crush-design.co.uk/">
+<meta property="og:image" content="https://typography.crush-design.co.uk/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Typography Studio by CRUSH Design — a browser-based type and contrast tool">
+<meta property="og:locale" content="en_GB">
+
+<!-- Twitter / X cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Typography Studio — Live Web Type & WCAG Contrast Tool">
+<meta name="twitter:description" content="A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. Export clean CSS or SCSS.">
+<meta name="twitter:image" content="https://typography.crush-design.co.uk/og-image.png">
+<meta name="twitter:image:alt" content="Typography Studio by CRUSH Design">
+
+<!-- Favicon: inline SVG matching the in-app "Aa" brand mark -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFE66D' stroke='%231A1A1A' stroke-width='3'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter,system-ui,sans-serif' font-weight='800' font-size='17' fill='%231A1A1A'%3EAa%3C/text%3E%3C/svg%3E">
+
+<!-- Schema.org JSON-LD — the most important single SEO signal here.
+     Describes the tool to Google, Bing, and AI assistants (ChatGPT
+     search, Perplexity, Gemini, Claude, etc.) in a structured way. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Typography Studio",
+  "alternateName": "Typography & Contrast Studio",
+  "description": "A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. Supports 200+ Google Fonts and Adobe Fonts kits. Exports clean, mobile-first CSS or SCSS.",
+  "url": "https://typography.crush-design.co.uk/",
+  "applicationCategory": "DesignApplication",
+  "applicationSubCategory": "Typography Tool",
+  "operatingSystem": "Any (runs in a modern web browser)",
+  "browserRequirements": "Requires JavaScript. Tested on current versions of Chrome, Firefox, Safari, and Edge.",
+  "inLanguage": "en-GB",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "CRUSH Design",
+    "url": "https://www.crush-design.co.uk"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CRUSH Design",
+    "url": "https://www.crush-design.co.uk"
+  },
+  "featureList": [
+    "Live responsive preview at four breakpoints: 375px mobile, 768px tablet, 1280px laptop, 1920px large desktop",
+    "WCAG 2.1 contrast ratio checker with AA and AAA pass/fail grades for normal and large text",
+    "200+ Google Fonts organised by category (sans-serif, serif, display, monospace, handwriting)",
+    "Adobe Fonts (Typekit) kit loading via Kit ID",
+    "Per-element control of font family, weight, size, line height, letter spacing, italic, text transform, and colour",
+    "Per-breakpoint overrides with visual diff indicators",
+    "Mobile-first CSS or SCSS export with media queries and a WCAG contrast report"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Typography Studio free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The studio runs entirely in your browser, requires no sign-in, and is free to use. There are no usage limits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which fonts does Typography Studio support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Over 200 Google Fonts are built in across sans-serif, serif, display, monospace, and handwriting categories. You can also load any Adobe Fonts (Typekit) web project by pasting your Kit ID; the kit's fonts then appear in the font picker alongside the Google Fonts list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it check WCAG accessibility contrast?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. As you change the background and foreground colours, the studio live-calculates the WCAG 2.1 contrast ratio and shows AA and AAA pass/fail grades for both normal and large text. Per-element text colours are also evaluated against the background."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export the result as CSS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Click Export to download a mobile-first stylesheet containing your colour palette as CSS custom properties, per-element styles, and breakpoint media queries. Both vanilla CSS and SCSS (with nested media queries) are supported."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my work saved between sessions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. By design, the studio does not persist anything between sessions. Export your CSS or SCSS whenever you want to keep your work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who made Typography Studio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typography Studio is built and maintained by CRUSH Design (crush-design.co.uk). The codebase was vibe-coded in collaboration with Claude, an AI assistant by Anthropic."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chrome-bg: #fafaf5;
+    --chrome-surface: #ffffff;
+    --chrome-ink: #1a1a1a;
+    --chrome-ink-soft: #555;
+    --chrome-ink-muted: #888;
+    --chrome-line: #1a1a1a;
+    --chrome-line-soft: #e5e5dc;
+    --accent: #ffe66d;
+    --accent-strong: #ffd92a;
+    --pass: #1a1a1a;
+    --fail-bg: #1a1a1a;
+    --fail-text: #fafaf5;
+    --pass-bg: #d4f5a8;
+    --pass-text: #1a1a1a;
+    --shadow-sm: 2px 2px 0 var(--chrome-line);
+    --shadow-md: 4px 4px 0 var(--chrome-line);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--chrome-bg);
+    color: var(--chrome-ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ===== HEADER ===== */
+  header.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--chrome-bg);
+    border-bottom: 2px solid var(--chrome-line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    border: 2px solid var(--chrome-line);
+    display: grid;
+    place-items: center;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .brand-name {
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-name span {
+    color: var(--chrome-ink-muted);
+    font-weight: 500;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    appearance: none;
+    border: 2px solid var(--chrome-line);
+    background: var(--chrome-surface);
+    color: var(--chrome-ink);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: transform 80ms ease, box-shadow 80ms ease;
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--chrome-line);
+  }
+
+  .btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--chrome-line);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+  }
+
+  .btn-icon {
+    padding: 8px 10px;
+  }
+
+  /* ===== LAYOUT ===== */
+  .layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .controls-panel {
+    background: var(--chrome-surface);
+    border-right: 2px solid var(--chrome-line);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .preview-panel {
+    overflow: hidden;
+    background: var(--chrome-bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== VIEWPORT BAR ===== */
+  .viewport-bar {
+    background: var(--chrome-bg);
+    border-bottom: 2px solid var(--chrome-line);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+
+  .viewport-bar-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--chrome-ink-soft);
+  }
+
+  .viewport-btn-row {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .viewport-btn {
+    appearance: none;
+    border: 1.5px solid var(--chrome-line);
+    background: var(--chrome-surface);
+    padding: 6px 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 80ms;
+    color: var(--chrome-ink);
+  }
+
+  .viewport-btn:hover { background: var(--chrome-bg); }
+
+  .viewport-btn.active {
+    background: var(--accent);
+  }
+
+  .viewport-icon {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .viewport-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    line-height: 1.1;
+  }
+
+  .viewport-name {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+  }
+
+  .viewport-width {
+    font-size: 9px;
+    opacity: 0.65;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ===== PREVIEW STAGE ===== */
+  .preview-stage {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--accent); /* overridden by JS */
+    transition: background 200ms ease;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 32px 16px;
+  }
+
+  .preview-frame {
+    width: 100%;
+    max-width: 800px; /* set by JS per breakpoint */
+    padding: 56px 40px;
+    transition: max-width 250ms ease, padding 250ms ease, color 200ms ease;
+    background: transparent;
+  }
+
+  /* ===== BREAKPOINT BADGE ON SECTION HEADER ===== */
+  .breakpoint-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    background: var(--accent);
+    border: 1px solid var(--chrome-line);
+  }
+
+  /* ===== OVERRIDE INDICATOR ===== */
+  .override-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--chrome-line);
+    margin-right: 6px;
+    vertical-align: middle;
+    opacity: 0;
+    transition: opacity 120ms;
+  }
+
+  .control-group.is-overridden .override-dot {
+    opacity: 1;
+    background: #e63946;
+  }
+
+  .reset-override-btn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--chrome-ink-muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 4px;
+    text-decoration: underline;
+    margin-left: 6px;
+    display: none;
+  }
+
+  .control-group.is-overridden .reset-override-btn {
+    display: inline;
+    color: #e63946;
+  }
+
+  .reset-override-btn:hover {
+    color: var(--chrome-ink);
+  }
+
+  @media (max-width: 900px) {
+    .preview-stage { padding: 20px 12px; }
+    .preview-frame { padding: 32px 20px; }
+  }
+
+  /* ===== CONTROL SECTIONS ===== */
+  .section {
+    border-bottom: 2px solid var(--chrome-line);
+  }
+
+  .section-header {
+    padding: 14px 20px;
+    background: var(--chrome-bg);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--chrome-ink);
+    border-bottom: 1px solid var(--chrome-line-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-body {
+    padding: 16px 20px;
+  }
+
+  /* ===== COLOR INPUTS ===== */
+  .color-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .color-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .color-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--chrome-ink-soft);
+  }
+
+  .color-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid var(--chrome-line);
+    padding: 6px 8px;
+    background: var(--chrome-surface);
+  }
+
+  .color-swatch-wrap {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 1px solid var(--chrome-line);
+  }
+
+  .color-swatch-wrap input[type="color"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  .color-swatch-display {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .color-hex {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    outline: none;
+    color: var(--chrome-ink);
+  }
+
+  .reverse-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  /* ===== CONTRAST DISPLAY ===== */
+  .contrast-display {
+    background: var(--chrome-bg);
+    border: 2px solid var(--chrome-line);
+    padding: 16px;
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .contrast-ratio {
+    font-family: 'Space Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .contrast-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--chrome-ink-soft);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  .grades {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .grade {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    border: 1.5px solid var(--chrome-line);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .grade-name {
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .grade-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .grade.pass { background: var(--pass-bg); }
+  .grade.fail { background: var(--fail-bg); color: var(--fail-text); border-color: var(--fail-bg); }
+  .grade.pass .grade-badge { background: var(--chrome-line); color: var(--chrome-bg); }
+  .grade.fail .grade-badge { background: var(--fail-text); color: var(--fail-bg); }
+
+  /* ===== ELEMENT TABS ===== */
+  .element-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 0;
+    background: var(--chrome-bg);
+    border-bottom: 1px solid var(--chrome-line-soft);
+  }
+
+  .tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 10px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--chrome-ink-muted);
+    border-bottom: 2px solid transparent;
+    transition: all 120ms;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tab:hover {
+    color: var(--chrome-ink);
+  }
+
+  .tab.active {
+    color: var(--chrome-ink);
+    border-bottom-color: var(--chrome-line);
+    background: var(--chrome-surface);
+  }
+
+  /* ===== TYPOGRAPHY CONTROLS ===== */
+  .control-group {
+    margin-bottom: 14px;
+  }
+
+  .control-group:last-child { margin-bottom: 0; }
+
+  .control-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--chrome-ink-soft);
+    margin-bottom: 6px;
+  }
+
+  .control-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--chrome-ink);
+    background: var(--chrome-bg);
+    padding: 2px 6px;
+    border: 1px solid var(--chrome-line-soft);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* ===== FONT PICKER ===== */
+  .font-picker {
+    position: relative;
+  }
+
+  .font-input {
+    width: 100%;
+    appearance: none;
+    border: 2px solid var(--chrome-line);
+    background: var(--chrome-surface);
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+  }
+
+  .font-input:focus {
+    background: var(--accent);
+  }
+
+  .font-dropdown {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    right: 0;
+    max-height: 280px;
+    overflow-y: auto;
+    background: var(--chrome-surface);
+    border: 2px solid var(--chrome-line);
+    z-index: 50;
+    display: none;
+    box-shadow: var(--shadow-md);
+  }
+
+  .font-dropdown.open {
+    display: block;
+  }
+
+  .font-option {
+    padding: 10px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--chrome-line-soft);
+    font-size: 16px;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .font-option:last-child { border-bottom: none; }
+
+  .font-option:hover, .font-option.highlighted {
+    background: var(--accent);
+  }
+
+  .font-option-name {
+    font-weight: 500;
+  }
+
+  .font-option-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--chrome-ink-muted);
+  }
+
+  .font-category-header {
+    padding: 6px 12px;
+    background: var(--chrome-bg);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--chrome-ink-soft);
+    border-bottom: 1px solid var(--chrome-line-soft);
+    position: sticky;
+    top: 0;
+  }
+
+  /* ===== SLIDER ===== */
+  .slider-row {
+    display: grid;
+    grid-template-columns: 1fr 64px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 6px;
+    background: var(--chrome-line-soft);
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    border: 1.5px solid var(--chrome-line);
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border: 1.5px solid var(--chrome-line);
+    cursor: pointer;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border: 1.5px solid var(--chrome-line);
+    cursor: pointer;
+    border-radius: 0;
+  }
+
+  .num-input {
+    appearance: none;
+    border: 1.5px solid var(--chrome-line);
+    background: var(--chrome-surface);
+    padding: 6px 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+    outline: none;
+  }
+
+  .num-input:focus { background: var(--accent); }
+
+  /* ===== SELECT ===== */
+  .select-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 4px;
+  }
+
+  .chip {
+    appearance: none;
+    border: 1.5px solid var(--chrome-line);
+    background: var(--chrome-surface);
+    padding: 6px 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 80ms;
+    text-align: center;
+  }
+
+  .chip:hover { background: var(--chrome-bg); }
+  .chip.active { background: var(--accent); }
+
+  .weight-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+
+  /* ===== TEXT INPUT ===== */
+  .text-input {
+    width: 100%;
+    appearance: none;
+    border: 2px solid var(--chrome-line);
+    background: var(--chrome-surface);
+    padding: 8px 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    outline: none;
+  }
+
+  .text-input:focus { background: var(--accent); }
+
+  .help-text {
+    font-size: 11px;
+    color: var(--chrome-ink-muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .help-text a {
+    color: var(--chrome-ink);
+    text-decoration: underline;
+  }
+
+  .help-text code {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    background: var(--chrome-bg);
+    padding: 1px 4px;
+    border: 1px solid var(--chrome-line-soft);
+  }
+
+  .adobe-error {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: #1a1a1a;
+    color: #fafaf5;
+    border: 2px solid #1a1a1a;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* ===== TOGGLE ===== */
+  .toggle-row {
+    display: flex;
+    gap: 6px;
+  }
+
+  /* ===== PREVIEW ===== */
+  .preview-section {
+    margin-bottom: 56px;
+  }
+
+  .preview-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .preview-eyebrow::before,
+  .preview-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.3;
+  }
+
+  /* Preview elements get styles applied via JS */
+  .preview h1 {
+    margin-bottom: 0.4em;
+  }
+
+  .preview h2 {
+    margin-top: 1.2em;
+    margin-bottom: 0.4em;
+  }
+
+  .preview h3 {
+    margin-top: 1.4em;
+    margin-bottom: 0.3em;
+  }
+
+  .preview h4 {
+    margin-top: 1.4em;
+    margin-bottom: 0.3em;
+  }
+
+  .preview h5, .preview h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.3em;
+  }
+
+  .preview p {
+    margin-bottom: 1em;
+  }
+
+  .preview a {
+    text-decoration: underline;
+  }
+
+  .preview blockquote {
+    margin: 1.5em 0;
+    padding: 0 1.5em;
+    border-left: 4px solid currentColor;
+  }
+
+  .preview ul, .preview ol {
+    margin: 1em 0 1em 1.5em;
+  }
+
+  .preview li {
+    margin-bottom: 0.4em;
+  }
+
+  .preview small {
+    display: block;
+    margin-top: 1em;
+    opacity: 0.7;
+  }
+
+  /* ===== SCROLLBARS ===== */
+  .controls-panel::-webkit-scrollbar,
+  .preview-panel::-webkit-scrollbar,
+  .font-dropdown::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .controls-panel::-webkit-scrollbar-track,
+  .preview-panel::-webkit-scrollbar-track,
+  .font-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .controls-panel::-webkit-scrollbar-thumb,
+  .preview-panel::-webkit-scrollbar-thumb,
+  .font-dropdown::-webkit-scrollbar-thumb {
+    background: var(--chrome-line);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  /* ===== MODAL ===== */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-backdrop.open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--chrome-bg);
+    border: 2px solid var(--chrome-line);
+    box-shadow: var(--shadow-md);
+    max-width: 700px;
+    width: 100%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-header {
+    padding: 16px 20px;
+    border-bottom: 2px solid var(--chrome-line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--accent);
+  }
+
+  .modal-title {
+    font-weight: 800;
+    font-size: 16px;
+  }
+
+  .modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  .modal-body pre {
+    background: #1a1a1a;
+    color: #f0f0f0;
+    padding: 16px;
+    overflow-x: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    border: 2px solid var(--chrome-line);
+  }
+
+  .format-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--chrome-line);
+    background: var(--chrome-bg);
+  }
+
+  .format-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    padding: 10px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--chrome-ink-muted);
+    border-right: 1px solid var(--chrome-line-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+  }
+
+  .format-tab:hover { color: var(--chrome-ink); }
+
+  .format-tab.active {
+    background: var(--chrome-surface);
+    color: var(--chrome-ink);
+    border-bottom: 3px solid var(--chrome-line);
+  }
+
+  .modal-footer {
+    padding: 16px 20px;
+    border-top: 2px solid var(--chrome-line);
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  /* ===== STATUS ===== */
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    background: var(--chrome-bg);
+    border: 1px solid var(--chrome-line-soft);
+  }
+
+  .status-pill.ok { background: var(--pass-bg); }
+  .status-pill .dot {
+    width: 6px;
+    height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+  }
+
+  /* ===== SITE FOOTER (credit bar) ===== */
+  .site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 24px;
+    background: var(--chrome-surface);
+    border-top: 2px solid var(--chrome-line);
+    flex-shrink: 0;
+  }
+
+  .site-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .site-footer-brand {
+    display: block;
+    text-decoration: none;
+    color: var(--chrome-ink);
+    line-height: 0;
+    flex-shrink: 0;
+  }
+
+  .site-footer-brand svg {
+    display: block;
+    width: 80px;
+    height: auto;
+    fill: currentColor;
+    transition: opacity 120ms ease;
+  }
+
+  .site-footer-brand:hover svg {
+    opacity: 0.65;
+  }
+
+  .site-footer-credit {
+    color: var(--chrome-ink-soft);
+    font-size: 12px;
+    line-height: 1.4;
+    border-left: 1px solid var(--chrome-line-soft);
+    padding-left: 16px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .site-footer-credit strong {
+    color: var(--chrome-ink);
+    font-weight: 700;
+  }
+
+  .site-footer-credit a {
+    color: var(--chrome-ink);
+    text-decoration: underline;
+  }
+
+  .site-footer-coffee {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    background: var(--accent);
+    border: 2px solid var(--chrome-line);
+    box-shadow: var(--shadow-sm);
+    padding: 7px 12px;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--chrome-ink);
+    font-family: inherit;
+    flex-shrink: 0;
+    transition: transform 80ms ease, box-shadow 80ms ease;
+    white-space: nowrap;
+  }
+
+  .site-footer-coffee:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 var(--chrome-line);
+  }
+
+  .site-footer-coffee:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--chrome-line);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+    }
+    .controls-panel {
+      max-height: 50vh;
+      border-right: none;
+      border-bottom: 2px solid var(--chrome-line);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .site-footer {
+      flex-wrap: wrap;
+      padding: 10px 16px;
+      gap: 10px;
+    }
+    .site-footer-credit {
+      border-left: none;
+      padding-left: 0;
+      white-space: normal;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">Aa</div>
+    <h1 class="brand-name">Typography Studio</h1>
+  </div>
+  <div class="header-actions">
+    <button class="btn" id="resetBtn" title="Reset to defaults">↺ Reset</button>
+    <button class="btn btn-primary" id="exportBtn">⬇ Export CSS</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ============ LEFT: CONTROLS ============ -->
+  <aside class="controls-panel">
+
+    <!-- COLOURS -->
+    <section class="section">
+      <div class="section-header">
+        <span>Colours</span>
+        <span class="status-pill" id="contrastStatus"><span class="dot"></span>Live</span>
+      </div>
+      <div class="section-body">
+        <div class="color-row">
+          <div class="color-field">
+            <span class="color-label">Background</span>
+            <div class="color-control">
+              <span class="color-swatch-wrap">
+                <span class="color-swatch-display" id="bgSwatch" style="background:#ffe66d;"></span>
+                <input type="color" id="bgColorPicker" value="#ffe66d">
+              </span>
+              <input type="text" class="color-hex" id="bgColorHex" value="#FFE66D" maxlength="7">
+            </div>
+          </div>
+          <div class="color-field">
+            <span class="color-label">Foreground</span>
+            <div class="color-control">
+              <span class="color-swatch-wrap">
+                <span class="color-swatch-display" id="fgSwatch" style="background:#1a1a1a;"></span>
+                <input type="color" id="fgColorPicker" value="#1a1a1a">
+              </span>
+              <input type="text" class="color-hex" id="fgColorHex" value="#1A1A1A" maxlength="7">
+            </div>
+          </div>
+        </div>
+        <button class="btn reverse-btn" id="reverseBtn">⇅ Reverse colours</button>
+
+        <div class="contrast-display">
+          <div class="contrast-ratio" id="contrastRatio">12.72</div>
+          <div class="contrast-label">Contrast ratio</div>
+          <div class="grades">
+            <div class="grade pass" id="gradeAALarge">
+              <span class="grade-name">AA Large</span>
+              <span class="grade-badge">Pass</span>
+            </div>
+            <div class="grade pass" id="gradeAAALarge">
+              <span class="grade-name">AAA Large</span>
+              <span class="grade-badge">Pass</span>
+            </div>
+            <div class="grade pass" id="gradeAANormal">
+              <span class="grade-name">AA Normal</span>
+              <span class="grade-badge">Pass</span>
+            </div>
+            <div class="grade pass" id="gradeAAANormal">
+              <span class="grade-name">AAA Normal</span>
+              <span class="grade-badge">Pass</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADOBE FONTS -->
+    <section class="section">
+      <div class="section-header">
+        <span>Adobe Fonts</span>
+        <span class="status-pill" id="adobeStatus"><span class="dot"></span>Not loaded</span>
+      </div>
+      <div class="section-body">
+        <div class="control-group">
+          <label class="control-label" for="adobeKit">
+            <span>Typekit Kit ID</span>
+          </label>
+          <input type="text" class="text-input" id="adobeKit" placeholder="e.g. abc1def">
+        </div>
+        <button class="btn" id="loadAdobeBtn" style="width: 100%;">Load Adobe Fonts kit</button>
+        <div id="adobeError" class="adobe-error" style="display:none;"></div>
+        <p class="help-text">
+          Find your Kit ID in
+          <a href="https://fonts.adobe.com/my_fonts#web_projects-section" target="_blank" rel="noopener">Adobe Fonts → Web Projects</a>.
+          The kit's domain list must include the site you're testing from (add <code>localhost</code> for local development).
+          Once loaded, the kit's fonts appear in the font picker below alongside Google Fonts.
+        </p>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section class="section">
+      <div class="section-header">
+        <span>Typography</span>
+        <span style="display:flex; gap:6px; align-items:center;">
+          <span class="status-pill"><span class="dot"></span><span id="currentElementLabel">H1</span></span>
+          <span class="breakpoint-badge" id="currentBreakpointBadge">@ Mobile</span>
+        </span>
+      </div>
+
+      <div class="element-tabs" id="elementTabs">
+        <!-- populated by JS -->
+      </div>
+
+      <div class="section-body">
+        <!-- Font family picker -->
+        <div class="control-group" data-prop="font">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Font Family <button class="reset-override-btn" type="button">reset</button></span>
+          </label>
+          <div class="font-picker">
+            <input type="text" class="font-input" id="fontInput" placeholder="Type to search 200+ Google Fonts…" autocomplete="off">
+            <div class="font-dropdown" id="fontDropdown"></div>
+          </div>
+          <p class="help-text" id="fontHelpText">Inherits from H1 if blank.</p>
+        </div>
+
+        <!-- Element colour -->
+        <div class="control-group" data-prop="color">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Text Colour <button class="reset-override-btn" type="button">reset</button></span>
+            <span class="control-value" id="elementContrastValue">—</span>
+          </label>
+          <div class="color-control">
+            <span class="color-swatch-wrap">
+              <span class="color-swatch-display" id="elementColorSwatch" style="background:#1a1a1a;"></span>
+              <input type="color" id="elementColorPicker" value="#1a1a1a">
+            </span>
+            <input type="text" class="color-hex" id="elementColorHex" placeholder="inherit" maxlength="7">
+            <button class="chip" id="inheritColorBtn" title="Inherit from foreground colour" style="padding: 4px 8px; font-size: 10px;">Inherit</button>
+          </div>
+          <p class="help-text" id="colorHelpText">Leave blank to inherit the foreground colour.</p>
+        </div>
+
+        <!-- Weight -->
+        <div class="control-group" data-prop="weight">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Font Weight <button class="reset-override-btn" type="button">reset</button></span>
+            <span class="control-value" id="weightValue">700</span>
+          </label>
+          <div class="weight-grid" id="weightGrid">
+            <button class="chip" data-w="100">100</button>
+            <button class="chip" data-w="200">200</button>
+            <button class="chip" data-w="300">300</button>
+            <button class="chip" data-w="400">400</button>
+            <button class="chip" data-w="500">500</button>
+            <button class="chip" data-w="600">600</button>
+            <button class="chip" data-w="700">700</button>
+            <button class="chip" data-w="800">800</button>
+            <button class="chip" data-w="900">900</button>
+          </div>
+        </div>
+
+        <!-- Size -->
+        <div class="control-group" data-prop="size">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Font Size <button class="reset-override-btn" type="button">reset</button></span>
+            <span class="control-value"><span id="sizeValueDisplay">64</span>px</span>
+          </label>
+          <div class="slider-row">
+            <input type="range" id="sizeSlider" min="8" max="200" step="1" value="64">
+            <input type="number" class="num-input" id="sizeInput" min="8" max="500" step="1" value="64">
+          </div>
+        </div>
+
+        <!-- Line height -->
+        <div class="control-group" data-prop="lineHeight">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Line Height <button class="reset-override-btn" type="button">reset</button></span>
+            <span class="control-value" id="lineHeightDisplay">1.10</span>
+          </label>
+          <div class="slider-row">
+            <input type="range" id="lineHeightSlider" min="0.8" max="3" step="0.01" value="1.1">
+            <input type="number" class="num-input" id="lineHeightInput" min="0.5" max="5" step="0.01" value="1.10">
+          </div>
+        </div>
+
+        <!-- Letter spacing -->
+        <div class="control-group" data-prop="letterSpacing">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Letter Spacing <button class="reset-override-btn" type="button">reset</button></span>
+            <span class="control-value"><span id="letterSpacingDisplay">0</span>em</span>
+          </label>
+          <div class="slider-row">
+            <input type="range" id="letterSpacingSlider" min="-0.1" max="0.5" step="0.005" value="0">
+            <input type="number" class="num-input" id="letterSpacingInput" min="-0.2" max="1" step="0.005" value="0">
+          </div>
+        </div>
+
+        <!-- Style toggles -->
+        <div class="control-group" data-prop="italic">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Style <button class="reset-override-btn" type="button">reset</button></span>
+          </label>
+          <div class="toggle-row">
+            <button class="chip" id="italicChip" style="flex:1;">Italic</button>
+          </div>
+        </div>
+
+        <!-- Transform -->
+        <div class="control-group" data-prop="transform">
+          <label class="control-label">
+            <span><span class="override-dot"></span>Text Transform <button class="reset-override-btn" type="button">reset</button></span>
+          </label>
+          <div class="select-row" id="transformRow">
+            <button class="chip active" data-t="none">None</button>
+            <button class="chip" data-t="uppercase">UPPER</button>
+            <button class="chip" data-t="lowercase">lower</button>
+            <button class="chip" data-t="capitalize">Title</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </aside>
+
+  <!-- ============ RIGHT: PREVIEW ============ -->
+  <main class="preview-panel" id="previewPanel">
+    <div class="viewport-bar" id="viewportBar">
+      <span class="viewport-bar-label">Viewport</span>
+      <div class="viewport-btn-row">
+        <button class="viewport-btn active" data-bp="base">
+          <span class="viewport-icon" aria-hidden="true">▯</span>
+          <span class="viewport-text"><span class="viewport-name">Mobile</span><span class="viewport-width">375px</span></span>
+        </button>
+        <button class="viewport-btn" data-bp="tablet">
+          <span class="viewport-icon" aria-hidden="true">▭</span>
+          <span class="viewport-text"><span class="viewport-name">Tablet</span><span class="viewport-width">768px</span></span>
+        </button>
+        <button class="viewport-btn" data-bp="laptop">
+          <span class="viewport-icon" aria-hidden="true">⬛</span>
+          <span class="viewport-text"><span class="viewport-name">Laptop</span><span class="viewport-width">1280px</span></span>
+        </button>
+        <button class="viewport-btn" data-bp="large">
+          <span class="viewport-icon" aria-hidden="true">⬜</span>
+          <span class="viewport-text"><span class="viewport-name">Large</span><span class="viewport-width">1920px</span></span>
+        </button>
+      </div>
+    </div>
+    <div class="preview-stage" id="previewStage">
+      <div class="preview-frame preview" id="previewFrame">
+        <div class="preview-section">
+          <div class="preview-eyebrow">Display Heading</div>
+          <h1>The quiet revolution of <em>reading on screens.</em></h1>
+        </div>
+
+        <div class="preview-section">
+          <div class="preview-eyebrow">Section Heading · H2</div>
+          <h2>A new approach to typographic hierarchy</h2>
+          <p>For decades, web typography was a compromise. Designers picked from a handful of system fonts and hoped for the best across browsers, devices, and viewing distances. Today the constraints have softened — but the principles have only become more important. Rhythm, contrast, and restraint do more than any single typeface ever could.</p>
+        </div>
+
+        <div class="preview-section">
+          <div class="preview-eyebrow">Subsection · H3</div>
+          <h3>First principles of type</h3>
+          <p>Three measurements decide whether a paragraph feels welcoming or fatiguing: the size of the body text, the height of each line, and the length of each measure. Get those right and almost any typeface can sing. Get them wrong and the most beautiful font becomes a wall.</p>
+          <p>Below, the same passage is shown with the styles you've configured. Try changing the line height on <strong>P</strong> by even <em>0.1</em> — the rhythm shifts immediately.</p>
+        </div>
+
+        <div class="preview-section">
+          <div class="preview-eyebrow">Detail · H4</div>
+          <h4>Hierarchy and rhythm</h4>
+          <p>Good hierarchy isn't loud. It's predictable. Readers should be able to glance at a page and know, without thinking, where to land first, where to land second, and where the body begins. You can read more about this in <a href="#" id="previewLink">an excellent essay by Robert Bringhurst</a>.</p>
+
+          <blockquote>
+            <p>Typography is the craft of endowing human language with a durable visual form.</p>
+            <small>— Robert Bringhurst, <em>The Elements of Typographic Style</em></small>
+          </blockquote>
+        </div>
+
+        <div class="preview-section">
+          <div class="preview-eyebrow">List · UL</div>
+          <h5>The essentials</h5>
+          <ul>
+            <li>Pick a typeface with a clear voice — not just one that "looks clean".</li>
+            <li>Set body text first; let headings react to it.</li>
+            <li>Measure (line length) belongs between 45 and 75 characters.</li>
+            <li>Test at the smallest size your users will actually see.</li>
+          </ul>
+        </div>
+
+        <div class="preview-section">
+          <div class="preview-eyebrow">Smallest hierarchy · H6</div>
+          <h6>Section Label</h6>
+          <p>Use H6 sparingly. It's the quietest voice in your hierarchy — perfect for metadata, captions, or section dividers in long-form content. <small>Captions and fine print live in the SMALL tag. They should still pass contrast.</small></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ============ SITE FOOTER (credit) ============ -->
+<footer class="site-footer" aria-label="Credits">
+  <div class="site-footer-left">
+    <a class="site-footer-brand" href="https://www.crush-design.co.uk" target="_blank" rel="noopener" title="CRUSH Design — crush-design.co.uk">
+      <svg viewBox="0 0 1304 326" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CRUSH">
+        <path fill="currentColor" d="M374.9,84.2h21.7c32.4,0,39.7,11.8,39.7,31.6c0,21-12.9,32.4-33.5,32.4h-28V84.2z M310.5,29v263h64.4v-88.7
+          h30.2l46.7,88.7h71.7l-51.1-92c-6.2-11-9.9-15.8-9.9-15.8v-0.8c26.1-13.2,39.4-43.8,39.4-71.7c0-38.3-18.8-65.1-48.6-76.5
+          C441.9,30.8,429,29,402.1,29H310.5z M1208.9,29v105.2h-95.6V29h-64.4v263h64.4V189h95.6v103h64.4V29H1208.9z M711.2,29v165.6
+          c0,27.6-18,42.3-45.6,42.3c-27.6,0-45.6-14.7-45.6-42.3V29h-64.4v165.6c0,59.2,43.4,101.2,110.4,101.2
+          c66.2,0,109.6-41.9,109.6-101.2V29H711.2z M823.7,105.9c0,79.7,116.7,78.6,116.7,109.5c0,15.6-14.1,20.7-27.2,20.7
+          c-32.6,0-62-26.8-62-26.8l-33.3,48.2c0,0,33.7,37,94.6,37c58.4,0,91.3-37.3,91.3-80.5c0-81.9-116.7-76.1-116.7-108.8
+          c0-14.5,14.5-20.3,27.6-20.3c31.2,0,57.2,22.8,57.2,22.8l26.8-51.8c0,0-27.6-29.4-83.4-29.4C863.9,26.6,823.7,58.1,823.7,105.9
+          M165.6,25.5c-74.5,0-134.9,60.4-134.9,134.9c0,74.5,60.4,134.9,134.9,134.9c39.6,0,75.2-17.1,99.9-44.2l-50.7-40.4
+          C202,223.3,184.4,231,165.1,231c-39,0-70.7-31.6-70.7-70.7c0-39,31.7-70.7,70.7-70.7c19.3,0,36.8,7.7,49.5,20.3l50.9-40.2
+          C240.8,42.5,205.2,25.5,165.6,25.5z"/>
+      </svg>
+    </a>
+    <span class="site-footer-credit">
+      Vibe coded by <strong>Claude</strong> 🤖 &nbsp;·&nbsp; © <a href="https://www.crush-design.co.uk" target="_blank" rel="noopener">crush-design.co.uk</a>
+    </span>
+  </div>
+  <a class="site-footer-coffee" href="https://www.buymeacoffee.com/crushdesign" target="_blank" rel="noopener">
+    ☕ Buy me a coffee
+  </a>
+</footer>
+
+<!-- ============ EXPORT MODAL ============ -->
+<div class="modal-backdrop" id="exportModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Your typography stylesheet</span>
+      <button class="btn btn-icon" id="closeModal">✕</button>
+    </div>
+    <div class="format-tabs">
+      <button class="format-tab active" data-format="css">CSS</button>
+      <button class="format-tab" data-format="scss">SCSS (nested)</button>
+    </div>
+    <div class="modal-body">
+      <pre id="exportCss"></pre>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" id="copyCssBtn">Copy to clipboard</button>
+      <button class="btn btn-primary" id="downloadCssBtn">⬇ Download <span id="downloadExt">.css</span></button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===========================================================
+   GOOGLE FONTS LIBRARY
+   A curated list of ~200 of the most popular Google Fonts,
+   organised by category.
+   =========================================================== */
+const GOOGLE_FONTS = [
+  // SANS-SERIF
+  { name: 'Inter', cat: 'sans-serif' },
+  { name: 'Roboto', cat: 'sans-serif' },
+  { name: 'Open Sans', cat: 'sans-serif' },
+  { name: 'Lato', cat: 'sans-serif' },
+  { name: 'Montserrat', cat: 'sans-serif' },
+  { name: 'Poppins', cat: 'sans-serif' },
+  { name: 'Source Sans 3', cat: 'sans-serif' },
+  { name: 'Raleway', cat: 'sans-serif' },
+  { name: 'Noto Sans', cat: 'sans-serif' },
+  { name: 'Nunito', cat: 'sans-serif' },
+  { name: 'Nunito Sans', cat: 'sans-serif' },
+  { name: 'Ubuntu', cat: 'sans-serif' },
+  { name: 'Work Sans', cat: 'sans-serif' },
+  { name: 'Rubik', cat: 'sans-serif' },
+  { name: 'PT Sans', cat: 'sans-serif' },
+  { name: 'Mukti', cat: 'sans-serif' },
+  { name: 'Quicksand', cat: 'sans-serif' },
+  { name: 'Manrope', cat: 'sans-serif' },
+  { name: 'Karla', cat: 'sans-serif' },
+  { name: 'Mulish', cat: 'sans-serif' },
+  { name: 'DM Sans', cat: 'sans-serif' },
+  { name: 'Barlow', cat: 'sans-serif' },
+  { name: 'Heebo', cat: 'sans-serif' },
+  { name: 'Cabin', cat: 'sans-serif' },
+  { name: 'Fira Sans', cat: 'sans-serif' },
+  { name: 'Outfit', cat: 'sans-serif' },
+  { name: 'Public Sans', cat: 'sans-serif' },
+  { name: 'Plus Jakarta Sans', cat: 'sans-serif' },
+  { name: 'Archivo', cat: 'sans-serif' },
+  { name: 'Maven Pro', cat: 'sans-serif' },
+  { name: 'Catamaran', cat: 'sans-serif' },
+  { name: 'Asap', cat: 'sans-serif' },
+  { name: 'Titillium Web', cat: 'sans-serif' },
+  { name: 'Dosis', cat: 'sans-serif' },
+  { name: 'Yanone Kaffeesatz', cat: 'sans-serif' },
+  { name: 'Comfortaa', cat: 'sans-serif' },
+  { name: 'Exo 2', cat: 'sans-serif' },
+  { name: 'Saira', cat: 'sans-serif' },
+  { name: 'Josefin Sans', cat: 'sans-serif' },
+  { name: 'Signika', cat: 'sans-serif' },
+  { name: 'Encode Sans', cat: 'sans-serif' },
+  { name: 'Overpass', cat: 'sans-serif' },
+  { name: 'IBM Plex Sans', cat: 'sans-serif' },
+  { name: 'Be Vietnam Pro', cat: 'sans-serif' },
+  { name: 'Sora', cat: 'sans-serif' },
+  { name: 'Onest', cat: 'sans-serif' },
+  { name: 'Albert Sans', cat: 'sans-serif' },
+  { name: 'Geist', cat: 'sans-serif' },
+  { name: 'Space Grotesk', cat: 'sans-serif' },
+  { name: 'Hanken Grotesk', cat: 'sans-serif' },
+  { name: 'Figtree', cat: 'sans-serif' },
+  { name: 'Bricolage Grotesque', cat: 'sans-serif' },
+  { name: 'Urbanist', cat: 'sans-serif' },
+  { name: 'Schibsted Grotesk', cat: 'sans-serif' },
+  { name: 'Instrument Sans', cat: 'sans-serif' },
+  { name: 'Roboto Condensed', cat: 'sans-serif' },
+  { name: 'Oswald', cat: 'sans-serif' },
+  { name: 'Roboto Flex', cat: 'sans-serif' },
+  { name: 'Hind', cat: 'sans-serif' },
+  { name: 'Hind Madurai', cat: 'sans-serif' },
+  { name: 'Assistant', cat: 'sans-serif' },
+  { name: 'Mada', cat: 'sans-serif' },
+  { name: 'M PLUS Rounded 1c', cat: 'sans-serif' },
+  { name: 'Varela Round', cat: 'sans-serif' },
+  { name: 'Fjalla One', cat: 'sans-serif' },
+  { name: 'Lexend', cat: 'sans-serif' },
+  { name: 'Lexend Deca', cat: 'sans-serif' },
+  { name: 'Red Hat Display', cat: 'sans-serif' },
+  { name: 'Red Hat Text', cat: 'sans-serif' },
+  { name: 'Kanit', cat: 'sans-serif' },
+  { name: 'Prompt', cat: 'sans-serif' },
+  { name: 'Inria Sans', cat: 'sans-serif' },
+  { name: 'Anek Latin', cat: 'sans-serif' },
+  { name: 'Chivo', cat: 'sans-serif' },
+  { name: 'Reddit Sans', cat: 'sans-serif' },
+  { name: 'Wix Madefor Display', cat: 'sans-serif' },
+  { name: 'Wix Madefor Text', cat: 'sans-serif' },
+  { name: 'Host Grotesk', cat: 'sans-serif' },
+
+  // SERIF
+  { name: 'Merriweather', cat: 'serif' },
+  { name: 'Playfair Display', cat: 'serif' },
+  { name: 'Lora', cat: 'serif' },
+  { name: 'PT Serif', cat: 'serif' },
+  { name: 'Roboto Slab', cat: 'serif' },
+  { name: 'Source Serif 4', cat: 'serif' },
+  { name: 'Slabo 27px', cat: 'serif' },
+  { name: 'Crimson Text', cat: 'serif' },
+  { name: 'Libre Baskerville', cat: 'serif' },
+  { name: 'Cormorant Garamond', cat: 'serif' },
+  { name: 'EB Garamond', cat: 'serif' },
+  { name: 'Bitter', cat: 'serif' },
+  { name: 'Domine', cat: 'serif' },
+  { name: 'Noto Serif', cat: 'serif' },
+  { name: 'Crimson Pro', cat: 'serif' },
+  { name: 'Vollkorn', cat: 'serif' },
+  { name: 'Libre Caslon Text', cat: 'serif' },
+  { name: 'Tinos', cat: 'serif' },
+  { name: 'Spectral', cat: 'serif' },
+  { name: 'Cardo', cat: 'serif' },
+  { name: 'Newsreader', cat: 'serif' },
+  { name: 'Bodoni Moda', cat: 'serif' },
+  { name: 'Fraunces', cat: 'serif' },
+  { name: 'DM Serif Display', cat: 'serif' },
+  { name: 'DM Serif Text', cat: 'serif' },
+  { name: 'Yeseva One', cat: 'serif' },
+  { name: 'Abril Fatface', cat: 'serif' },
+  { name: 'Lusitana', cat: 'serif' },
+  { name: 'Cormorant', cat: 'serif' },
+  { name: 'Old Standard TT', cat: 'serif' },
+  { name: 'Petrona', cat: 'serif' },
+  { name: 'Faustina', cat: 'serif' },
+  { name: 'Literata', cat: 'serif' },
+  { name: 'Instrument Serif', cat: 'serif' },
+  { name: 'Cormorant Infant', cat: 'serif' },
+  { name: 'Libre Bodoni', cat: 'serif' },
+  { name: 'Libre Caslon Display', cat: 'serif' },
+  { name: 'Gloock', cat: 'serif' },
+  { name: 'PT Serif Caption', cat: 'serif' },
+  { name: 'Alegreya', cat: 'serif' },
+  { name: 'Arvo', cat: 'serif' },
+  { name: 'Zilla Slab', cat: 'serif' },
+  { name: 'Josefin Slab', cat: 'serif' },
+  { name: 'IBM Plex Serif', cat: 'serif' },
+  { name: 'BioRhyme', cat: 'serif' },
+  { name: 'Sentient', cat: 'serif' },
+  { name: 'Young Serif', cat: 'serif' },
+
+  // DISPLAY
+  { name: 'Bebas Neue', cat: 'display' },
+  { name: 'Anton', cat: 'display' },
+  { name: 'Righteous', cat: 'display' },
+  { name: 'Lobster', cat: 'display' },
+  { name: 'Bangers', cat: 'display' },
+  { name: 'Russo One', cat: 'display' },
+  { name: 'Black Ops One', cat: 'display' },
+  { name: 'Press Start 2P', cat: 'display' },
+  { name: 'Monoton', cat: 'display' },
+  { name: 'Audiowide', cat: 'display' },
+  { name: 'Limelight', cat: 'display' },
+  { name: 'Major Mono Display', cat: 'display' },
+  { name: 'Special Elite', cat: 'display' },
+  { name: 'Frijole', cat: 'display' },
+  { name: 'Bungee', cat: 'display' },
+  { name: 'Bungee Inline', cat: 'display' },
+  { name: 'Bungee Shade', cat: 'display' },
+  { name: 'Faster One', cat: 'display' },
+  { name: 'Knewave', cat: 'display' },
+  { name: 'Lilita One', cat: 'display' },
+  { name: 'Squada One', cat: 'display' },
+  { name: 'Staatliches', cat: 'display' },
+  { name: 'Ultra', cat: 'display' },
+  { name: 'Unica One', cat: 'display' },
+  { name: 'Vast Shadow', cat: 'display' },
+  { name: 'Yatra One', cat: 'display' },
+  { name: 'Climate Crisis', cat: 'display' },
+  { name: 'Honk', cat: 'display' },
+  { name: 'Sixtyfour', cat: 'display' },
+  { name: 'Alfa Slab One', cat: 'display' },
+  { name: 'Bowlby One', cat: 'display' },
+  { name: 'Bowlby One SC', cat: 'display' },
+  { name: 'Chango', cat: 'display' },
+  { name: 'Codystar', cat: 'display' },
+  { name: 'Creepster', cat: 'display' },
+  { name: 'Damion', cat: 'display' },
+  { name: 'Eater', cat: 'display' },
+  { name: 'Fascinate', cat: 'display' },
+  { name: 'Federo', cat: 'display' },
+  { name: 'Flavors', cat: 'display' },
+  { name: 'Gravitas One', cat: 'display' },
+  { name: 'Holtwood One SC', cat: 'display' },
+  { name: 'Iceland', cat: 'display' },
+  { name: 'Keania One', cat: 'display' },
+  { name: 'Leckerli One', cat: 'display' },
+  { name: 'Modak', cat: 'display' },
+  { name: 'Mountains of Christmas', cat: 'display' },
+  { name: 'Orbitron', cat: 'display' },
+  { name: 'Paytone One', cat: 'display' },
+  { name: 'Playball', cat: 'display' },
+  { name: 'Plaster', cat: 'display' },
+  { name: 'Sniglet', cat: 'display' },
+  { name: 'Sunshiney', cat: 'display' },
+  { name: 'Tilt Warp', cat: 'display' },
+  { name: 'Wallpoet', cat: 'display' },
+  { name: 'Wendy One', cat: 'display' },
+  { name: 'Zen Tokyo Zoo', cat: 'display' },
+
+  // MONOSPACE
+  { name: 'Roboto Mono', cat: 'monospace' },
+  { name: 'Source Code Pro', cat: 'monospace' },
+  { name: 'Fira Code', cat: 'monospace' },
+  { name: 'JetBrains Mono', cat: 'monospace' },
+  { name: 'IBM Plex Mono', cat: 'monospace' },
+  { name: 'Inconsolata', cat: 'monospace' },
+  { name: 'Space Mono', cat: 'monospace' },
+  { name: 'DM Mono', cat: 'monospace' },
+  { name: 'Overpass Mono', cat: 'monospace' },
+  { name: 'Anonymous Pro', cat: 'monospace' },
+  { name: 'Cousine', cat: 'monospace' },
+  { name: 'Cutive Mono', cat: 'monospace' },
+  { name: 'Nova Mono', cat: 'monospace' },
+  { name: 'Share Tech Mono', cat: 'monospace' },
+  { name: 'Ubuntu Mono', cat: 'monospace' },
+  { name: 'Victor Mono', cat: 'monospace' },
+  { name: 'Geist Mono', cat: 'monospace' },
+  { name: 'Azeret Mono', cat: 'monospace' },
+  { name: 'Spline Sans Mono', cat: 'monospace' },
+  { name: 'Reddit Mono', cat: 'monospace' },
+
+  // HANDWRITING / SCRIPT
+  { name: 'Pacifico', cat: 'handwriting' },
+  { name: 'Caveat', cat: 'handwriting' },
+  { name: 'Dancing Script', cat: 'handwriting' },
+  { name: 'Indie Flower', cat: 'handwriting' },
+  { name: 'Shadows Into Light', cat: 'handwriting' },
+  { name: 'Satisfy', cat: 'handwriting' },
+  { name: 'Great Vibes', cat: 'handwriting' },
+  { name: 'Sacramento', cat: 'handwriting' },
+  { name: 'Kaushan Script', cat: 'handwriting' },
+  { name: 'Permanent Marker', cat: 'handwriting' },
+  { name: 'Architects Daughter', cat: 'handwriting' },
+  { name: 'Amatic SC', cat: 'handwriting' },
+  { name: 'Patrick Hand', cat: 'handwriting' },
+  { name: 'Homemade Apple', cat: 'handwriting' },
+  { name: 'Reenie Beanie', cat: 'handwriting' },
+  { name: 'Cookie', cat: 'handwriting' },
+  { name: 'Allura', cat: 'handwriting' },
+  { name: 'Tangerine', cat: 'handwriting' },
+  { name: 'Marck Script', cat: 'handwriting' },
+  { name: 'Yellowtail', cat: 'handwriting' },
+  { name: 'Calligraffitti', cat: 'handwriting' },
+  { name: 'Italianno', cat: 'handwriting' },
+  { name: 'Parisienne', cat: 'handwriting' },
+  { name: 'Pinyon Script', cat: 'handwriting' },
+  { name: 'Rouge Script', cat: 'handwriting' },
+  { name: 'Gloria Hallelujah', cat: 'handwriting' },
+  { name: 'Just Another Hand', cat: 'handwriting' },
+  { name: 'Kalam', cat: 'handwriting' },
+  { name: 'Caveat Brush', cat: 'handwriting' },
+  { name: 'Cedarville Cursive', cat: 'handwriting' },
+];
+
+/* ===========================================================
+   STATE
+   =========================================================== */
+// Populated when the user loads an Adobe Fonts kit
+let ADOBE_FONTS = [];
+
+// Mobile-first breakpoints. `base` always applies; the others stack on top
+// of base in order via min-width media queries.
+const BREAKPOINTS = [
+  { key: 'base',   label: 'Mobile',  minWidth: 0,    previewWidth: 375 },
+  { key: 'tablet', label: 'Tablet',  minWidth: 768,  previewWidth: 768 },
+  { key: 'laptop', label: 'Laptop',  minWidth: 1280, previewWidth: 1280 },
+  { key: 'large',  label: 'Large',   minWidth: 1920, previewWidth: 1920 },
+];
+
+// Each element stores a `base` object (the full mobile-first style)
+// plus optional override objects for each larger breakpoint.
+const DEFAULT_ELEMENTS = {
+  h1: {
+    base:   { font: 'Playfair Display', weight: 700, size: 32, lineHeight: 1.1,  letterSpacing: -0.02, italic: false, transform: 'none', color: '' },
+    tablet: { size: 48, lineHeight: 1.08 },
+    laptop: { size: 64, lineHeight: 1.05 },
+    large:  { size: 80 },
+  },
+  h2: {
+    base:   { font: 'Playfair Display', weight: 600, size: 24, lineHeight: 1.2,  letterSpacing: -0.01, italic: false, transform: 'none', color: '' },
+    tablet: { size: 32, lineHeight: 1.18 },
+    laptop: { size: 44, lineHeight: 1.15 },
+    large:  { size: 56 },
+  },
+  h3: {
+    base:   { font: 'Inter', weight: 700, size: 20, lineHeight: 1.3,  letterSpacing: -0.01, italic: false, transform: 'none', color: '' },
+    tablet: { size: 24 },
+    laptop: { size: 28, lineHeight: 1.25 },
+    large:  { size: 32 },
+  },
+  h4: {
+    base:   { font: 'Inter', weight: 600, size: 18, lineHeight: 1.35, letterSpacing: 0, italic: false, transform: 'none', color: '' },
+    tablet: {},
+    laptop: { size: 22, lineHeight: 1.3 },
+    large:  { size: 24 },
+  },
+  h5: {
+    base:   { font: 'Inter', weight: 600, size: 16, lineHeight: 1.4,  letterSpacing: 0, italic: false, transform: 'none', color: '' },
+    tablet: {},
+    laptop: { size: 18 },
+    large:  {},
+  },
+  h6: {
+    base:   { font: 'Space Mono', weight: 700, size: 12, lineHeight: 1.4, letterSpacing: 0.12, italic: false, transform: 'uppercase', color: '' },
+    tablet: {},
+    laptop: {},
+    large:  { size: 14 },
+  },
+  p: {
+    base:   { font: 'Inter', weight: 400, size: 16, lineHeight: 1.6,  letterSpacing: 0, italic: false, transform: 'none', color: '' },
+    tablet: { lineHeight: 1.65 },
+    laptop: { size: 17 },
+    large:  { size: 18 },
+  },
+  blockquote: {
+    base:   { font: 'Playfair Display', weight: 400, size: 18, lineHeight: 1.5, letterSpacing: 0, italic: true, transform: 'none', color: '' },
+    tablet: { size: 20 },
+    laptop: { size: 22 },
+    large:  { size: 24 },
+  },
+  a: {
+    base:   { font: '', weight: 500, size: 0, lineHeight: 0, letterSpacing: 0, italic: false, transform: 'none', color: '#0066CC' },
+    tablet: {},
+    laptop: {},
+    large:  {},
+  },
+  li: {
+    base:   { font: '', weight: 0, size: 0, lineHeight: 0, letterSpacing: 0, italic: false, transform: 'none', color: '' },
+    tablet: {},
+    laptop: {},
+    large:  {},
+  },
+  small: {
+    base:   { font: '', weight: 0, size: 12, lineHeight: 1.5, letterSpacing: 0, italic: false, transform: 'none', color: '' },
+    tablet: {},
+    laptop: { size: 13 },
+    large:  {},
+  },
+};
+
+const ELEMENT_LIST = [
+  { key: 'h1', label: 'H1' },
+  { key: 'h2', label: 'H2' },
+  { key: 'h3', label: 'H3' },
+  { key: 'h4', label: 'H4' },
+  { key: 'h5', label: 'H5' },
+  { key: 'h6', label: 'H6' },
+  { key: 'p',  label: 'P' },
+  { key: 'blockquote', label: 'Quote' },
+  { key: 'a',  label: 'Link' },
+  { key: 'li', label: 'List' },
+  { key: 'small', label: 'Small' },
+];
+
+const state = {
+  bg: '#FFE66D',
+  fg: '#1A1A1A',
+  adobeKitId: '',
+  adobeLoaded: false,
+  currentElement: 'h1',
+  currentBreakpoint: 'base',
+  elements: JSON.parse(JSON.stringify(DEFAULT_ELEMENTS)),
+};
+
+// Merge base + each breakpoint up to and including `targetBp` to get the
+// effective styles that would apply at that breakpoint.
+function resolveElementStyles(elKey, targetBp) {
+  const el = state.elements[elKey];
+  const result = {};
+  for (const bp of BREAKPOINTS) {
+    if (el[bp.key]) Object.assign(result, el[bp.key]);
+    if (bp.key === targetBp) break;
+  }
+  return result;
+}
+
+// Test whether a property is explicitly set at this breakpoint (vs inherited)
+function isOverridden(elKey, bp, prop) {
+  const obj = state.elements[elKey][bp];
+  return obj && obj[prop] !== undefined;
+}
+
+const loadedFonts = new Set();
+
+/* ===========================================================
+   FONT LOADING
+   =========================================================== */
+function loadGoogleFont(family) {
+  if (!family || loadedFonts.has(family)) return;
+  if (!GOOGLE_FONTS.find(f => f.name === family)) {
+    // Not in our list — try anyway, could be a custom/Adobe font name
+    return;
+  }
+  loadedFonts.add(family);
+  const linkId = 'gfont-' + family.replace(/\s+/g, '-').toLowerCase();
+  if (document.getElementById(linkId)) return;
+
+  const link = document.createElement('link');
+  link.id = linkId;
+  link.rel = 'stylesheet';
+  // Request all weights & italic variants where available
+  const familyParam = family.replace(/\s+/g, '+');
+  link.href = `https://fonts.googleapis.com/css2?family=${familyParam}:ital,wght@0,100..900;1,100..900&display=swap`;
+  document.head.appendChild(link);
+}
+
+function loadAdobeFontsKit(kitId) {
+  const statusEl = document.getElementById('adobeStatus');
+  statusEl.classList.remove('ok');
+  statusEl.innerHTML = '<span class="dot"></span>Loading…';
+  document.getElementById('adobeError').style.display = 'none';
+
+  // Remove any existing kit link
+  const existing = document.getElementById('adobe-fonts-link');
+  if (existing) existing.remove();
+
+  const cssUrl = `https://use.typekit.net/${kitId}.css`;
+
+  // 1. Add a <link> so the browser actually uses the fonts in the page
+  const link = document.createElement('link');
+  link.id = 'adobe-fonts-link';
+  link.rel = 'stylesheet';
+  link.href = cssUrl;
+  document.head.appendChild(link);
+
+  // 2. Also fetch the CSS so we can extract the font-family names
+  fetch(cssUrl)
+    .then(res => {
+      if (!res.ok) throw new Error(`Adobe returned HTTP ${res.status} — the kit ID may be wrong, or your domain isn't authorised in this kit's settings.`);
+      return res.text();
+    })
+    .then(css => {
+      // Extract font-family names from @font-face blocks
+      const families = new Set();
+      const fontFaceRegex = /@font-face\s*\{([^}]*)\}/g;
+      let block;
+      while ((block = fontFaceRegex.exec(css)) !== null) {
+        const m = block[1].match(/font-family\s*:\s*["']?([^"';\n}]+?)["']?\s*;/i);
+        if (m) families.add(m[1].trim());
+      }
+
+      ADOBE_FONTS = Array.from(families).sort();
+
+      if (ADOBE_FONTS.length === 0) {
+        state.adobeLoaded = false;
+        statusEl.innerHTML = '<span class="dot"></span>Kit empty';
+        showAdobeError(
+          'The kit loaded but contains no fonts. Open your kit in Adobe Fonts → Web Projects and make sure fonts have been added to it.'
+        );
+        return;
+      }
+
+      state.adobeLoaded = true;
+      state.adobeKitId = kitId;
+      statusEl.classList.add('ok');
+      statusEl.innerHTML = `<span class="dot"></span>${ADOBE_FONTS.length} font${ADOBE_FONTS.length === 1 ? '' : 's'} loaded`;
+
+      // Re-render the dropdown if it's open so the new fonts appear
+      if (fontDropdown.classList.contains('open')) {
+        renderFontDropdown(fontInput.value);
+      }
+    })
+    .catch(err => {
+      state.adobeLoaded = false;
+      statusEl.innerHTML = '<span class="dot"></span>Failed';
+      const isFileProtocol = window.location.protocol === 'file:';
+      showAdobeError(
+        err.message + (isFileProtocol
+          ? ' — You are opening this page as a local file (file://). Adobe Fonts kits are usually locked to specific web domains and may not allow file:// origins. To test, add "localhost" (or your kit\'s domains) to the Web Project domain list, then serve this file from a local web server.'
+          : ' — Check the Kit ID and your kit\'s domain whitelist in Adobe Fonts → Web Projects.')
+      );
+    });
+}
+
+function showAdobeError(msg) {
+  const el = document.getElementById('adobeError');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+/* ===========================================================
+   COLOUR & CONTRAST
+   =========================================================== */
+function hexToRgb(hex) {
+  const cleaned = hex.replace('#', '');
+  if (cleaned.length !== 6) return null;
+  const r = parseInt(cleaned.substr(0, 2), 16);
+  const g = parseInt(cleaned.substr(2, 2), 16);
+  const b = parseInt(cleaned.substr(4, 2), 16);
+  if (isNaN(r) || isNaN(g) || isNaN(b)) return null;
+  return { r, g, b };
+}
+
+function relativeLuminance(rgb) {
+  const transform = (v) => {
+    const s = v / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  };
+  return 0.2126 * transform(rgb.r) + 0.7152 * transform(rgb.g) + 0.0722 * transform(rgb.b);
+}
+
+function contrastRatio(hex1, hex2) {
+  const rgb1 = hexToRgb(hex1);
+  const rgb2 = hexToRgb(hex2);
+  if (!rgb1 || !rgb2) return 1;
+  const l1 = relativeLuminance(rgb1);
+  const l2 = relativeLuminance(rgb2);
+  const lighter = Math.max(l1, l2);
+  const darker = Math.min(l1, l2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+function updateContrastDisplay() {
+  const ratio = contrastRatio(state.bg, state.fg);
+  document.getElementById('contrastRatio').textContent = ratio.toFixed(2);
+
+  const grades = [
+    { id: 'gradeAALarge', threshold: 3, label: 'AA Large' },
+    { id: 'gradeAAALarge', threshold: 4.5, label: 'AAA Large' },
+    { id: 'gradeAANormal', threshold: 4.5, label: 'AA Normal' },
+    { id: 'gradeAAANormal', threshold: 7, label: 'AAA Normal' },
+  ];
+
+  grades.forEach(g => {
+    const el = document.getElementById(g.id);
+    const pass = ratio >= g.threshold;
+    el.classList.toggle('pass', pass);
+    el.classList.toggle('fail', !pass);
+    el.querySelector('.grade-badge').textContent = pass ? 'Pass' : 'Fail';
+  });
+
+  // When background or foreground changes, the per-element contrast
+  // changes too — refresh that display if a current element is active.
+  if (document.getElementById('elementContrastValue')) {
+    updateElementContrast();
+    // Also re-sync the swatch since inherited colour follows fg
+    const resolved = resolveElementStyles(state.currentElement, state.currentBreakpoint);
+    if (resolved && !resolved.color) {
+      document.getElementById('elementColorSwatch').style.background = state.fg;
+      document.getElementById('elementColorPicker').value = state.fg.toLowerCase();
+    }
+  }
+}
+
+/* ===========================================================
+   PREVIEW STYLING
+   =========================================================== */
+function applyPreviewStyles() {
+  const preview = document.getElementById('previewFrame');
+  const previewStage = document.getElementById('previewStage');
+
+  // Background & foreground
+  previewStage.style.background = state.bg;
+  preview.style.color = state.fg;
+
+  // Set preview frame width based on current breakpoint
+  const bp = BREAKPOINTS.find(b => b.key === state.currentBreakpoint);
+  preview.style.maxWidth = bp.previewWidth + 'px';
+
+  // Build CSS rules for each element, resolving styles for the current breakpoint
+  const styleEl = document.getElementById('dynamicPreviewStyles') || (() => {
+    const s = document.createElement('style');
+    s.id = 'dynamicPreviewStyles';
+    document.head.appendChild(s);
+    return s;
+  })();
+
+  let css = '';
+  for (const elKey of Object.keys(state.elements)) {
+    const e = resolveElementStyles(elKey, state.currentBreakpoint);
+    const selector = `.preview ${elKey}`;
+    let rules = [];
+    if (e.font) {
+      rules.push(`font-family: "${e.font}", ${guessCategory(e.font)}`);
+    }
+    if (e.weight) rules.push(`font-weight: ${e.weight}`);
+    if (e.size) rules.push(`font-size: ${e.size}px`);
+    if (e.lineHeight) rules.push(`line-height: ${e.lineHeight}`);
+    if (e.letterSpacing !== undefined && e.letterSpacing !== 0) rules.push(`letter-spacing: ${e.letterSpacing}em`);
+    if (e.italic) rules.push(`font-style: italic`);
+    if (e.transform && e.transform !== 'none') rules.push(`text-transform: ${e.transform}`);
+    if (e.color) rules.push(`color: ${e.color}`);
+    if (rules.length) {
+      css += `${selector} { ${rules.join('; ')}; }\n`;
+    }
+  }
+  styleEl.textContent = css;
+}
+
+function guessCategory(name) {
+  const f = GOOGLE_FONTS.find(f => f.name === name);
+  if (!f) return 'sans-serif';
+  if (f.cat === 'monospace') return 'monospace';
+  if (f.cat === 'serif') return 'serif';
+  if (f.cat === 'handwriting') return 'cursive';
+  return 'sans-serif';
+}
+
+/* ===========================================================
+   FONT PICKER (DROPDOWN)
+   =========================================================== */
+const fontInput = document.getElementById('fontInput');
+const fontDropdown = document.getElementById('fontDropdown');
+
+function renderFontDropdown(query = '') {
+  const q = query.trim().toLowerCase();
+
+  // Merge sources: Google + Adobe (Adobe shown first if any)
+  const adobeMatches = ADOBE_FONTS
+    .filter(name => name.toLowerCase().includes(q))
+    .map(name => ({ name, cat: 'adobe' }));
+  const googleMatches = GOOGLE_FONTS.filter(f => f.name.toLowerCase().includes(q));
+
+  // Group by category
+  const grouped = {};
+  adobeMatches.forEach(f => {
+    if (!grouped.adobe) grouped.adobe = [];
+    grouped.adobe.push(f);
+  });
+  googleMatches.forEach(f => {
+    if (!grouped[f.cat]) grouped[f.cat] = [];
+    grouped[f.cat].push(f);
+  });
+
+  const categoryOrder = ['adobe', 'sans-serif', 'serif', 'display', 'monospace', 'handwriting'];
+  const categoryLabels = {
+    adobe: 'Adobe Fonts (from your kit)',
+    'sans-serif': 'sans-serif',
+    serif: 'serif',
+    display: 'display',
+    monospace: 'monospace',
+    handwriting: 'handwriting',
+  };
+  let html = '';
+
+  // If user typed a custom name not in either list, offer it as "custom"
+  const allKnown = [...ADOBE_FONTS.map(n => n.toLowerCase()), ...GOOGLE_FONTS.map(f => f.name.toLowerCase())];
+  if (q && !allKnown.includes(q)) {
+    html += `<div class="font-option" data-name="${escapeAttr(fontInput.value.trim())}" data-custom="1">
+      <span class="font-option-name">"${escapeHtml(fontInput.value.trim())}"</span>
+      <span class="font-option-meta">Use as custom · won't preview unless loaded elsewhere</span>
+    </div>`;
+  }
+
+  categoryOrder.forEach(cat => {
+    if (!grouped[cat]) return;
+    html += `<div class="font-category-header">${categoryLabels[cat]}</div>`;
+    grouped[cat].forEach(f => {
+      // Only preload Google fonts; Adobe fonts are already loaded via the kit
+      if (cat !== 'adobe') loadGoogleFont(f.name);
+      const fallback = cat === 'adobe' ? 'sans-serif' : guessCategory(f.name);
+      html += `<div class="font-option" data-name="${escapeAttr(f.name)}" style="font-family: '${escapeAttr(f.name)}', ${fallback};">
+        <span class="font-option-name">${escapeHtml(f.name)}</span>
+        <span class="font-option-meta">${cat === 'adobe' ? 'adobe' : cat}</span>
+      </div>`;
+    });
+  });
+
+  if (!html) {
+    html = `<div class="font-option" style="cursor:default;"><span class="font-option-name">No matches</span></div>`;
+  }
+
+  fontDropdown.innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function escapeAttr(s) {
+  return s.replace(/"/g, '&quot;');
+}
+
+fontInput.addEventListener('focus', () => {
+  renderFontDropdown(fontInput.value);
+  fontDropdown.classList.add('open');
+});
+
+fontInput.addEventListener('input', () => {
+  renderFontDropdown(fontInput.value);
+  fontDropdown.classList.add('open');
+});
+
+fontInput.addEventListener('blur', () => {
+  // Delay to allow click on option
+  setTimeout(() => fontDropdown.classList.remove('open'), 150);
+});
+
+fontDropdown.addEventListener('mousedown', (e) => {
+  const opt = e.target.closest('.font-option');
+  if (!opt) return;
+  const name = opt.dataset.name;
+  if (!name) return;
+  selectFont(name);
+});
+
+function selectFont(name) {
+  // Only load from Google CDN if it's actually a Google font
+  if (GOOGLE_FONTS.find(f => f.name === name)) {
+    loadGoogleFont(name);
+  }
+  setProperty('font', name);
+  fontInput.value = name;
+  fontDropdown.classList.remove('open');
+  applyPreviewStyles();
+  syncControlsToCurrentElement();
+}
+
+/* ===========================================================
+   TABS & CONTROLS
+   =========================================================== */
+function renderTabs() {
+  const tabsContainer = document.getElementById('elementTabs');
+  tabsContainer.innerHTML = '';
+  ELEMENT_LIST.forEach(el => {
+    const b = document.createElement('button');
+    b.className = 'tab' + (state.currentElement === el.key ? ' active' : '');
+    b.textContent = el.label;
+    b.dataset.key = el.key;
+    b.addEventListener('click', () => {
+      state.currentElement = el.key;
+      renderTabs();
+      syncControlsToCurrentElement();
+    });
+    tabsContainer.appendChild(b);
+  });
+  document.getElementById('currentElementLabel').textContent =
+    ELEMENT_LIST.find(e => e.key === state.currentElement).label;
+}
+
+// Write a property value to the override object for the current element &
+// current breakpoint. This is the single source of truth for all edits.
+function setProperty(prop, value) {
+  if (!state.elements[state.currentElement][state.currentBreakpoint]) {
+    state.elements[state.currentElement][state.currentBreakpoint] = {};
+  }
+  state.elements[state.currentElement][state.currentBreakpoint][prop] = value;
+  updateOverrideIndicators();
+}
+
+// Remove a per-breakpoint override and revert to inheriting from the
+// previous breakpoint. No-op at base.
+function clearOverride(prop) {
+  if (state.currentBreakpoint === 'base') return;
+  const obj = state.elements[state.currentElement][state.currentBreakpoint];
+  if (obj && obj[prop] !== undefined) {
+    delete obj[prop];
+  }
+}
+
+// Toggle the visual "overridden" state on each control-group based on
+// whether its property is set at the current breakpoint.
+function updateOverrideIndicators() {
+  document.querySelectorAll('.control-group[data-prop]').forEach(group => {
+    const prop = group.dataset.prop;
+    const overridden = isOverridden(state.currentElement, state.currentBreakpoint, prop);
+    group.classList.toggle('is-overridden', overridden);
+  });
+}
+
+function syncControlsToCurrentElement() {
+  const resolved = resolveElementStyles(state.currentElement, state.currentBreakpoint);
+
+  // Update breakpoint badge in section header
+  const bpDef = BREAKPOINTS.find(b => b.key === state.currentBreakpoint);
+  document.getElementById('currentBreakpointBadge').textContent = '@ ' + bpDef.label;
+
+  // Font input
+  fontInput.value = resolved.font || '';
+  document.getElementById('fontHelpText').textContent =
+    resolved.font ? `Active: ${resolved.font}` : 'Leave blank to inherit. Type any Google font name (or Adobe font after loading kit).';
+
+  // Weight chips
+  document.querySelectorAll('#weightGrid .chip').forEach(c => {
+    c.classList.toggle('active', parseInt(c.dataset.w, 10) === resolved.weight);
+  });
+  document.getElementById('weightValue').textContent = resolved.weight || '–';
+
+  // Size
+  document.getElementById('sizeSlider').value = resolved.size || 16;
+  document.getElementById('sizeInput').value = resolved.size || 16;
+  document.getElementById('sizeValueDisplay').textContent = resolved.size || '–';
+
+  // Line height
+  document.getElementById('lineHeightSlider').value = resolved.lineHeight || 1.5;
+  document.getElementById('lineHeightInput').value = (resolved.lineHeight || 1.5).toFixed(2);
+  document.getElementById('lineHeightDisplay').textContent = (resolved.lineHeight || 1.5).toFixed(2);
+
+  // Letter spacing
+  document.getElementById('letterSpacingSlider').value = resolved.letterSpacing || 0;
+  document.getElementById('letterSpacingInput').value = (resolved.letterSpacing || 0).toFixed(3);
+  document.getElementById('letterSpacingDisplay').textContent = (resolved.letterSpacing || 0).toFixed(3);
+
+  // Italic
+  document.getElementById('italicChip').classList.toggle('active', !!resolved.italic);
+
+  // Transform
+  document.querySelectorAll('#transformRow .chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.t === (resolved.transform || 'none'));
+  });
+
+  // Element colour
+  const effectiveColor = resolved.color || state.fg;
+  document.getElementById('elementColorHex').value = resolved.color || '';
+  document.getElementById('elementColorPicker').value = effectiveColor.toLowerCase();
+  document.getElementById('elementColorSwatch').style.background = effectiveColor;
+  document.getElementById('elementColorSwatch').style.opacity = resolved.color ? '1' : '0.5';
+  updateElementContrast();
+
+  // Override indicators
+  updateOverrideIndicators();
+}
+
+// Wire up control events — all write to the current breakpoint via setProperty
+document.getElementById('weightGrid').addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  setProperty('weight', parseInt(chip.dataset.w, 10));
+  syncControlsToCurrentElement();
+  applyPreviewStyles();
+});
+
+document.getElementById('sizeSlider').addEventListener('input', (e) => {
+  const v = parseInt(e.target.value, 10);
+  setProperty('size', v);
+  document.getElementById('sizeInput').value = v;
+  document.getElementById('sizeValueDisplay').textContent = v;
+  applyPreviewStyles();
+});
+
+document.getElementById('sizeInput').addEventListener('input', (e) => {
+  const v = parseInt(e.target.value, 10) || 0;
+  setProperty('size', v);
+  document.getElementById('sizeSlider').value = v;
+  document.getElementById('sizeValueDisplay').textContent = v;
+  applyPreviewStyles();
+});
+
+document.getElementById('lineHeightSlider').addEventListener('input', (e) => {
+  const v = parseFloat(e.target.value);
+  setProperty('lineHeight', v);
+  document.getElementById('lineHeightInput').value = v.toFixed(2);
+  document.getElementById('lineHeightDisplay').textContent = v.toFixed(2);
+  applyPreviewStyles();
+});
+
+document.getElementById('lineHeightInput').addEventListener('input', (e) => {
+  const v = parseFloat(e.target.value) || 1;
+  setProperty('lineHeight', v);
+  document.getElementById('lineHeightSlider').value = v;
+  document.getElementById('lineHeightDisplay').textContent = v.toFixed(2);
+  applyPreviewStyles();
+});
+
+document.getElementById('letterSpacingSlider').addEventListener('input', (e) => {
+  const v = parseFloat(e.target.value);
+  setProperty('letterSpacing', v);
+  document.getElementById('letterSpacingInput').value = v.toFixed(3);
+  document.getElementById('letterSpacingDisplay').textContent = v.toFixed(3);
+  applyPreviewStyles();
+});
+
+document.getElementById('letterSpacingInput').addEventListener('input', (e) => {
+  const v = parseFloat(e.target.value) || 0;
+  setProperty('letterSpacing', v);
+  document.getElementById('letterSpacingSlider').value = v;
+  document.getElementById('letterSpacingDisplay').textContent = v.toFixed(3);
+  applyPreviewStyles();
+});
+
+document.getElementById('italicChip').addEventListener('click', () => {
+  const resolved = resolveElementStyles(state.currentElement, state.currentBreakpoint);
+  setProperty('italic', !resolved.italic);
+  syncControlsToCurrentElement();
+  applyPreviewStyles();
+});
+
+document.getElementById('transformRow').addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  setProperty('transform', chip.dataset.t);
+  syncControlsToCurrentElement();
+  applyPreviewStyles();
+});
+
+// Per-control "reset" buttons remove the override at the current breakpoint
+document.querySelectorAll('.control-group[data-prop] .reset-override-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const group = btn.closest('[data-prop]');
+    const prop = group.dataset.prop;
+    clearOverride(prop);
+    syncControlsToCurrentElement();
+    applyPreviewStyles();
+  });
+});
+
+/* ===========================================================
+   VIEWPORT / BREAKPOINT SWITCHER
+   =========================================================== */
+document.getElementById('viewportBar').addEventListener('click', (e) => {
+  const btn = e.target.closest('.viewport-btn');
+  if (!btn) return;
+  state.currentBreakpoint = btn.dataset.bp;
+  document.querySelectorAll('.viewport-btn').forEach(b => b.classList.toggle('active', b === btn));
+  syncControlsToCurrentElement();
+  applyPreviewStyles();
+});
+
+/* ===========================================================
+   ELEMENT COLOUR
+   =========================================================== */
+function updateElementContrast() {
+  const resolved = resolveElementStyles(state.currentElement, state.currentBreakpoint);
+  const effective = resolved.color || state.fg;
+  const ratio = contrastRatio(state.bg, effective);
+  const display = document.getElementById('elementContrastValue');
+  display.textContent = ratio.toFixed(2) + ' : 1';
+  // Visual hint: highlight in red if below WCAG AA Normal
+  if (ratio < 4.5) {
+    display.style.background = '#1a1a1a';
+    display.style.color = '#fafaf5';
+    display.style.borderColor = '#1a1a1a';
+  } else {
+    display.style.background = '#d4f5a8';
+    display.style.color = '#1a1a1a';
+    display.style.borderColor = '#1a1a1a';
+  }
+}
+
+document.getElementById('elementColorPicker').addEventListener('input', (e) => {
+  const hex = e.target.value.toUpperCase();
+  setProperty('color', hex);
+  document.getElementById('elementColorHex').value = hex;
+  document.getElementById('elementColorSwatch').style.background = hex;
+  document.getElementById('elementColorSwatch').style.opacity = '1';
+  applyPreviewStyles();
+  updateElementContrast();
+});
+
+document.getElementById('elementColorHex').addEventListener('input', (e) => {
+  let v = e.target.value.trim();
+  if (!v) {
+    setProperty('color', '');
+    syncControlsToCurrentElement();
+    applyPreviewStyles();
+    return;
+  }
+  if (!v.startsWith('#')) v = '#' + v;
+  if (/^#[0-9A-Fa-f]{6}$/.test(v)) {
+    const hex = v.toUpperCase();
+    setProperty('color', hex);
+    document.getElementById('elementColorPicker').value = hex.toLowerCase();
+    document.getElementById('elementColorSwatch').style.background = hex;
+    document.getElementById('elementColorSwatch').style.opacity = '1';
+    applyPreviewStyles();
+    updateElementContrast();
+  }
+});
+
+document.getElementById('inheritColorBtn').addEventListener('click', () => {
+  setProperty('color', '');
+  syncControlsToCurrentElement();
+  applyPreviewStyles();
+});
+
+/* ===========================================================
+   COLOUR INPUTS
+   =========================================================== */
+function setBg(hex) {
+  hex = hex.toUpperCase();
+  if (!/^#[0-9A-F]{6}$/.test(hex)) return;
+  state.bg = hex;
+  document.getElementById('bgColorPicker').value = hex;
+  document.getElementById('bgColorHex').value = hex;
+  document.getElementById('bgSwatch').style.background = hex;
+  applyPreviewStyles();
+  updateContrastDisplay();
+}
+
+function setFg(hex) {
+  hex = hex.toUpperCase();
+  if (!/^#[0-9A-F]{6}$/.test(hex)) return;
+  state.fg = hex;
+  document.getElementById('fgColorPicker').value = hex;
+  document.getElementById('fgColorHex').value = hex;
+  document.getElementById('fgSwatch').style.background = hex;
+  applyPreviewStyles();
+  updateContrastDisplay();
+}
+
+document.getElementById('bgColorPicker').addEventListener('input', (e) => setBg(e.target.value));
+document.getElementById('fgColorPicker').addEventListener('input', (e) => setFg(e.target.value));
+
+document.getElementById('bgColorHex').addEventListener('input', (e) => {
+  let v = e.target.value.trim();
+  if (v && !v.startsWith('#')) v = '#' + v;
+  if (/^#[0-9A-Fa-f]{6}$/.test(v)) setBg(v);
+});
+
+document.getElementById('fgColorHex').addEventListener('input', (e) => {
+  let v = e.target.value.trim();
+  if (v && !v.startsWith('#')) v = '#' + v;
+  if (/^#[0-9A-Fa-f]{6}$/.test(v)) setFg(v);
+});
+
+document.getElementById('reverseBtn').addEventListener('click', () => {
+  const oldBg = state.bg;
+  setBg(state.fg);
+  setFg(oldBg);
+});
+
+/* ===========================================================
+   ADOBE FONTS
+   =========================================================== */
+document.getElementById('loadAdobeBtn').addEventListener('click', () => {
+  const kit = document.getElementById('adobeKit').value.trim();
+  if (!kit) {
+    alert('Please enter your Typekit Kit ID first.');
+    return;
+  }
+  state.adobeKitId = kit;
+  loadAdobeFontsKit(kit);
+});
+
+/* ===========================================================
+   EXPORT CSS
+   =========================================================== */
+function generateCSS() {
+  // Collect unique Google Fonts in use across all breakpoints
+  const fontsInUse = new Set();
+  Object.values(state.elements).forEach(el => {
+    BREAKPOINTS.forEach(bp => {
+      const obj = el[bp.key];
+      if (obj && obj.font && GOOGLE_FONTS.find(f => f.name === obj.font)) {
+        fontsInUse.add(obj.font);
+      }
+    });
+  });
+
+  let css = '/* ============================================\n';
+  css += '   Generated by Typography & Contrast Studio\n';
+  css += `   ${new Date().toISOString().slice(0, 10)}\n`;
+  css += '   Mobile-first responsive typography\n';
+  css += '   ============================================ */\n\n';
+
+  if (fontsInUse.size > 0) {
+    const importUrl = Array.from(fontsInUse).map(f => `family=${f.replace(/\s+/g, '+')}:ital,wght@0,100..900;1,100..900`).join('&');
+    css += `@import url('https://fonts.googleapis.com/css2?${importUrl}&display=swap');\n\n`;
+  }
+
+  if (state.adobeKitId) {
+    css += `/* Adobe Fonts kit — also add to <head>:\n`;
+    css += `   <link rel="stylesheet" href="https://use.typekit.net/${state.adobeKitId}.css"> */\n\n`;
+  }
+
+  // Root: colours
+  css += `:root {\n`;
+  css += `  --color-bg: ${state.bg};\n`;
+  css += `  --color-fg: ${state.fg};\n`;
+  css += `}\n\n`;
+
+  // Body baseline
+  css += `body {\n`;
+  css += `  background: var(--color-bg);\n`;
+  css += `  color: var(--color-fg);\n`;
+  css += `}\n\n`;
+
+  // Format base styles — skip falsy/default values
+  const formatBaseRules = (e, indent = '  ') => {
+    if (!e) return '';
+    let r = '';
+    if (e.font) r += `${indent}font-family: "${e.font}", ${guessCategory(e.font)};\n`;
+    if (e.weight) r += `${indent}font-weight: ${e.weight};\n`;
+    if (e.size) r += `${indent}font-size: ${e.size}px;\n`;
+    if (e.lineHeight) r += `${indent}line-height: ${e.lineHeight};\n`;
+    if (e.letterSpacing) r += `${indent}letter-spacing: ${e.letterSpacing}em;\n`;
+    if (e.italic) r += `${indent}font-style: italic;\n`;
+    if (e.transform && e.transform !== 'none') r += `${indent}text-transform: ${e.transform};\n`;
+    if (e.color) r += `${indent}color: ${e.color};\n`;
+    return r;
+  };
+
+  // Format override styles — emit any property that is defined in the object
+  const formatOverrideRules = (e, indent = '    ') => {
+    if (!e) return '';
+    let r = '';
+    if (e.font !== undefined && e.font) r += `${indent}font-family: "${e.font}", ${guessCategory(e.font)};\n`;
+    if (e.weight !== undefined && e.weight) r += `${indent}font-weight: ${e.weight};\n`;
+    if (e.size !== undefined && e.size) r += `${indent}font-size: ${e.size}px;\n`;
+    if (e.lineHeight !== undefined && e.lineHeight) r += `${indent}line-height: ${e.lineHeight};\n`;
+    if (e.letterSpacing !== undefined) r += `${indent}letter-spacing: ${e.letterSpacing}em;\n`;
+    if (e.italic !== undefined) r += `${indent}font-style: ${e.italic ? 'italic' : 'normal'};\n`;
+    if (e.transform !== undefined) r += `${indent}text-transform: ${e.transform};\n`;
+    if (e.color !== undefined && e.color) r += `${indent}color: ${e.color};\n`;
+    return r;
+  };
+
+  // Base styles (mobile-first — apply at all sizes)
+  css += `/* ===== Base styles (mobile, all sizes) ===== */\n`;
+  Object.entries(state.elements).forEach(([key, el]) => {
+    const rules = formatBaseRules(el.base);
+    if (rules) {
+      css += `${key} {\n${rules}}\n\n`;
+    }
+  });
+
+  // Each non-base breakpoint's overrides, wrapped in a media query
+  BREAKPOINTS.filter(bp => bp.key !== 'base').forEach(bp => {
+    let blockBody = '';
+    Object.entries(state.elements).forEach(([key, el]) => {
+      if (!el[bp.key]) return;
+      const rules = formatOverrideRules(el[bp.key]);
+      if (rules) {
+        blockBody += `  ${key} {\n${rules}  }\n\n`;
+      }
+    });
+    if (blockBody) {
+      css += `/* ===== ${bp.label} (≥ ${bp.minWidth}px) ===== */\n`;
+      css += `@media (min-width: ${bp.minWidth}px) {\n`;
+      css += blockBody;
+      css += `}\n\n`;
+    }
+  });
+
+  // Contrast info as comment
+  const ratio = contrastRatio(state.bg, state.fg);
+  css += `/* WCAG contrast (foreground vs background): ${ratio.toFixed(2)}:1\n`;
+  css += `   AA Large (≥3): ${ratio >= 3 ? 'PASS' : 'FAIL'}\n`;
+  css += `   AAA Large (≥4.5): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}\n`;
+  css += `   AA Normal (≥4.5): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}\n`;
+  css += `   AAA Normal (≥7): ${ratio >= 7 ? 'PASS' : 'FAIL'} */\n`;
+
+  return css;
+}
+
+/* ===========================================================
+   SCSS EXPORT — nested media queries inside selectors
+   =========================================================== */
+function generateSCSS() {
+  // Collect Google Fonts in use
+  const fontsInUse = new Set();
+  Object.values(state.elements).forEach(el => {
+    BREAKPOINTS.forEach(bp => {
+      const obj = el[bp.key];
+      if (obj && obj.font && GOOGLE_FONTS.find(f => f.name === obj.font)) {
+        fontsInUse.add(obj.font);
+      }
+    });
+  });
+
+  let scss = '// ============================================\n';
+  scss += '// Generated by Typography & Contrast Studio\n';
+  scss += `// ${new Date().toISOString().slice(0, 10)}\n`;
+  scss += '// Mobile-first responsive typography (SCSS)\n';
+  scss += '// ============================================\n\n';
+
+  if (fontsInUse.size > 0) {
+    const importUrl = Array.from(fontsInUse).map(f => `family=${f.replace(/\s+/g, '+')}:ital,wght@0,100..900;1,100..900`).join('&');
+    scss += `@import url('https://fonts.googleapis.com/css2?${importUrl}&display=swap');\n\n`;
+  }
+
+  if (state.adobeKitId) {
+    scss += `// Adobe Fonts kit — also add to <head>:\n`;
+    scss += `// <link rel="stylesheet" href="https://use.typekit.net/${state.adobeKitId}.css">\n\n`;
+  }
+
+  // SCSS variables
+  scss += `// === Colour palette ===\n`;
+  scss += `$color-bg: ${state.bg};\n`;
+  scss += `$color-fg: ${state.fg};\n\n`;
+
+  scss += `// === Breakpoints ===\n`;
+  BREAKPOINTS.filter(bp => bp.key !== 'base').forEach(bp => {
+    scss += `$bp-${bp.key}: ${bp.minWidth}px;\n`;
+  });
+  scss += '\n';
+
+  // Body baseline
+  scss += `body {\n`;
+  scss += `  background: $color-bg;\n`;
+  scss += `  color: $color-fg;\n`;
+  scss += `}\n\n`;
+
+  // Build per-element rules with nested media queries
+  const formatBaseRules = (e, indent) => {
+    if (!e) return '';
+    let r = '';
+    if (e.font) r += `${indent}font-family: "${e.font}", ${guessCategory(e.font)};\n`;
+    if (e.weight) r += `${indent}font-weight: ${e.weight};\n`;
+    if (e.size) r += `${indent}font-size: ${e.size}px;\n`;
+    if (e.lineHeight) r += `${indent}line-height: ${e.lineHeight};\n`;
+    if (e.letterSpacing) r += `${indent}letter-spacing: ${e.letterSpacing}em;\n`;
+    if (e.italic) r += `${indent}font-style: italic;\n`;
+    if (e.transform && e.transform !== 'none') r += `${indent}text-transform: ${e.transform};\n`;
+    if (e.color) r += `${indent}color: ${e.color};\n`;
+    return r;
+  };
+
+  const formatOverrideRules = (e, indent) => {
+    if (!e) return '';
+    let r = '';
+    if (e.font !== undefined && e.font) r += `${indent}font-family: "${e.font}", ${guessCategory(e.font)};\n`;
+    if (e.weight !== undefined && e.weight) r += `${indent}font-weight: ${e.weight};\n`;
+    if (e.size !== undefined && e.size) r += `${indent}font-size: ${e.size}px;\n`;
+    if (e.lineHeight !== undefined && e.lineHeight) r += `${indent}line-height: ${e.lineHeight};\n`;
+    if (e.letterSpacing !== undefined) r += `${indent}letter-spacing: ${e.letterSpacing}em;\n`;
+    if (e.italic !== undefined) r += `${indent}font-style: ${e.italic ? 'italic' : 'normal'};\n`;
+    if (e.transform !== undefined) r += `${indent}text-transform: ${e.transform};\n`;
+    if (e.color !== undefined && e.color) r += `${indent}color: ${e.color};\n`;
+    return r;
+  };
+
+  // Each element as one block with breakpoint overrides nested inside
+  Object.entries(state.elements).forEach(([key, el]) => {
+    const baseRules = formatBaseRules(el.base, '  ');
+    const overrides = BREAKPOINTS
+      .filter(bp => bp.key !== 'base' && el[bp.key])
+      .map(bp => ({ bp, body: formatOverrideRules(el[bp.key], '    ') }))
+      .filter(o => o.body);
+
+    // Skip element if it has nothing at all
+    if (!baseRules && overrides.length === 0) return;
+
+    scss += `${key} {\n`;
+    if (baseRules) scss += baseRules;
+    overrides.forEach((o, idx) => {
+      if (baseRules || idx > 0) scss += '\n';
+      scss += `  @media (min-width: $bp-${o.bp.key}) {\n`;
+      scss += o.body;
+      scss += `  }\n`;
+    });
+    scss += `}\n\n`;
+  });
+
+  // Contrast info as comment
+  const ratio = contrastRatio(state.bg, state.fg);
+  scss += `// WCAG contrast (foreground vs background): ${ratio.toFixed(2)}:1\n`;
+  scss += `// AA Large (≥3):    ${ratio >= 3 ? 'PASS' : 'FAIL'}\n`;
+  scss += `// AAA Large (≥4.5): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}\n`;
+  scss += `// AA Normal (≥4.5): ${ratio >= 4.5 ? 'PASS' : 'FAIL'}\n`;
+  scss += `// AAA Normal (≥7):  ${ratio >= 7 ? 'PASS' : 'FAIL'}\n`;
+
+  return scss;
+}
+
+let exportFormat = 'css';
+function generateExport() {
+  return exportFormat === 'scss' ? generateSCSS() : generateCSS();
+}
+function getExportExtension() { return exportFormat === 'scss' ? '.scss' : '.css'; }
+function getExportMime() { return exportFormat === 'scss' ? 'text/x-scss' : 'text/css'; }
+
+document.querySelectorAll('.format-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.format-tab').forEach(t => t.classList.toggle('active', t === tab));
+    exportFormat = tab.dataset.format;
+    document.getElementById('exportCss').textContent = generateExport();
+    document.getElementById('downloadExt').textContent = getExportExtension();
+  });
+});
+
+document.getElementById('exportBtn').addEventListener('click', () => {
+  document.getElementById('exportCss').textContent = generateExport();
+  document.getElementById('downloadExt').textContent = getExportExtension();
+  document.getElementById('exportModal').classList.add('open');
+});
+
+document.getElementById('closeModal').addEventListener('click', () => {
+  document.getElementById('exportModal').classList.remove('open');
+});
+
+document.getElementById('exportModal').addEventListener('click', (e) => {
+  if (e.target.id === 'exportModal') {
+    document.getElementById('exportModal').classList.remove('open');
+  }
+});
+
+document.getElementById('copyCssBtn').addEventListener('click', async () => {
+  const text = generateExport();
+  try {
+    await navigator.clipboard.writeText(text);
+    const btn = document.getElementById('copyCssBtn');
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  } catch (err) {
+    alert('Copy failed. Please select and copy manually.');
+  }
+});
+
+document.getElementById('downloadCssBtn').addEventListener('click', () => {
+  const text = generateExport();
+  const blob = new Blob([text], { type: getExportMime() });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'typography' + getExportExtension();
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+/* ===========================================================
+   RESET
+   =========================================================== */
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Reset all typography settings to defaults?')) return;
+  state.elements = JSON.parse(JSON.stringify(DEFAULT_ELEMENTS));
+  state.bg = '#FFE66D';
+  state.fg = '#1A1A1A';
+  state.currentElement = 'h1';
+  state.currentBreakpoint = 'base';
+  document.querySelectorAll('.viewport-btn').forEach(b => b.classList.toggle('active', b.dataset.bp === 'base'));
+  setBg(state.bg);
+  setFg(state.fg);
+  renderTabs();
+  syncControlsToCurrentElement();
+  preloadInitialFonts();
+  applyPreviewStyles();
+});
+
+function preloadInitialFonts() {
+  const fonts = new Set();
+  Object.values(state.elements).forEach(el => {
+    BREAKPOINTS.forEach(bp => {
+      const obj = el[bp.key];
+      if (obj && obj.font) fonts.add(obj.font);
+    });
+  });
+  fonts.forEach(loadGoogleFont);
+}
+
+function init() {
+  setBg(state.bg);
+  setFg(state.fg);
+  renderTabs();
+  syncControlsToCurrentElement();
+  preloadInitialFonts();
+  applyPreviewStyles();
+  updateContrastDisplay();
+}
+
+init();
+</script>
+</body>
+</html>

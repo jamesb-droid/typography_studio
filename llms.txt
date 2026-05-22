@@ -1,0 +1,28 @@
+# Typography Studio
+
+> A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. Built by CRUSH Design.
+
+Typography Studio is a single-page web tool for designers and developers who need to design a responsive type system and verify its colour contrast against WCAG 2.1 accessibility standards. The tool runs entirely in the browser — there is no sign-in, and no user data is stored or transmitted.
+
+## What it does
+
+- Provides a live, side-by-side editor and preview for web typography.
+- Lets you set per-element styles (h1–h6, p, blockquote, a, li, small) for font family, weight, size, line height, letter spacing, italic, text transform, and colour.
+- Adds per-breakpoint overrides for mobile (375px), tablet (768px), laptop (1280px), and large desktop (1920px), with visual indicators showing which properties differ from the base.
+- Calculates WCAG 2.1 contrast ratios in real time, with AA and AAA pass-fail grades for both normal and large text.
+- Includes 200+ Google Fonts built in, organised by category (sans-serif, serif, display, monospace, handwriting/script).
+- Loads Adobe Fonts (Typekit) web projects via Kit ID, so licensed Adobe fonts appear in the picker alongside the Google Fonts list.
+- Exports the result as either mobile-first vanilla CSS (with media queries) or SCSS (with nested media queries), including a WCAG contrast report as comments.
+
+## Who it's for
+
+Designers and front-end developers who are setting up a type system for a new project, retrofitting one onto an existing site, or simply auditing an existing colour pair for accessibility.
+
+## Who made it
+
+Typography Studio is built and maintained by [CRUSH Design](https://www.crush-design.co.uk), a UK design studio. The codebase was vibe-coded in collaboration with Claude, an AI assistant made by Anthropic.
+
+## Optional
+
+- [CRUSH Design website](https://www.crush-design.co.uk): the studio behind Typography Studio.
+- [Buy me a coffee](https://www.buymeacoffee.com/crushdesign): support continued development.

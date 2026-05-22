@@ -1,0 +1,62 @@
+# ============================================================
+# Typography Studio — robots.txt
+# Place this file at the root of your site, e.g.:
+# https://typography.crush-design.co.uk/robots.txt
+# ============================================================
+
+# All general crawlers (Googlebot, Bingbot, etc.) — allowed.
+User-agent: *
+Allow: /
+
+# ------------------------------------------------------------
+# AI / LLM crawlers — explicitly listed so the tool can be
+# surfaced in answers from ChatGPT, Perplexity, Google AI
+# Overviews, Claude, Gemini, etc.
+#
+# If you'd rather OPT OUT of being used to train AI models or
+# answer AI search queries, change the "Allow: /" under each
+# user-agent below to "Disallow: /".
+# ------------------------------------------------------------
+
+# OpenAI (ChatGPT — both training and search use this agent)
+User-agent: GPTBot
+Allow: /
+
+# OpenAI's user-triggered fetcher (e.g. ChatGPT Browse)
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google's AI training opt-out signal (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl — used to seed many open-source LLM training sets
+User-agent: CCBot
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta (Llama)
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+Sitemap: https://typography.crush-design.co.uk/sitemap.xml
