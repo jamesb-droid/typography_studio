@@ -4,15 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- ============================================================
-     ⚠  GO-LIVE CHECKLIST — before deploying:
-     1. Search-replace https://typography.crush-design.co.uk/
-        below with your real production URL (canonical, og:url,
-        twitter, JSON-LD, sitemap reference).
-     2. Create a 1200×630 PNG Open Graph image and host it at
-        the og:image URL referenced below (recommended filename
-        og-image.png).
-     3. Also drop the companion llms.txt, robots.txt, and
-        sitemap.xml at the site root.
+     Typography Studio — https://www.typographystudio.co.uk/
+     Built by CRUSH Design. Vibe-coded with Claude (Anthropic).
+
+     REMAINING PRE-LAUNCH TASKS:
+     1. Create a 1200×630 PNG Open Graph image and host it at
+        https://www.typographystudio.co.uk/og-image.png
+        (filename must match the og:image / twitter:image URL below).
+     2. Drop the companion llms.txt, robots.txt, and sitemap.xml
+        files at the site root.
+     3. At the server level, 301-redirect non-www → www so
+        https://typographystudio.co.uk/ → https://www.typographystudio.co.uk/
+        (avoids duplicate-content / split link-equity in SEO).
      ============================================================ -->
 
 <title>Typography Studio — Live Web Type & WCAG Contrast Tool | CRUSH</title>
@@ -21,15 +24,15 @@
 <meta name="author" content="CRUSH Design">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#FFE66D">
-<link rel="canonical" href="https://typography.crush-design.co.uk/">
+<link rel="canonical" href="https://www.typographystudio.co.uk/">
 
 <!-- Open Graph (Facebook, LinkedIn, Slack, Discord, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CRUSH Design">
 <meta property="og:title" content="Typography Studio — Live Web Type & WCAG Contrast Tool">
 <meta property="og:description" content="A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. 200+ Google Fonts and Adobe Fonts support. Export clean CSS or SCSS.">
-<meta property="og:url" content="https://typographystudio.co.uk/">
-<meta property="og:image" content="https://typographystudio.co.uk/og-image.png">
+<meta property="og:url" content="https://www.typographystudio.co.uk/">
+<meta property="og:image" content="https://www.typographystudio.co.uk/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Typography Studio by CRUSH Design — a browser-based type and contrast tool">
@@ -39,7 +42,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Typography Studio — Live Web Type & WCAG Contrast Tool">
 <meta name="twitter:description" content="A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. Export clean CSS or SCSS.">
-<meta name="twitter:image" content="https://typographystudio.co.uk/og-image.png">
+<meta name="twitter:image" content="https://www.typographystudio.co.uk/og-image.png">
 <meta name="twitter:image:alt" content="Typography Studio by CRUSH Design">
 
 <!-- Favicon: inline SVG matching the in-app "Aa" brand mark -->
@@ -55,7 +58,7 @@
   "name": "Typography Studio",
   "alternateName": "Typography & Contrast Studio",
   "description": "A free, browser-based studio for designing responsive web typography with live WCAG contrast checking. Supports 200+ Google Fonts and Adobe Fonts kits. Exports clean, mobile-first CSS or SCSS.",
-  "url": "https://typographystudio.co.uk/",
+  "url": "https://www.typographystudio.co.uk/",
   "applicationCategory": "DesignApplication",
   "applicationSubCategory": "Typography Tool",
   "operatingSystem": "Any (runs in a modern web browser)",
@@ -2360,10 +2363,14 @@ function clearOverride(prop) {
 
 // Toggle the visual "overridden" state on each control-group based on
 // whether its property is set at the current breakpoint.
+// At base, every property has a value by definition (it's the foundation),
+// so "override" only makes sense at the larger breakpoints where a value
+// is a deliberate deviation from what's inherited.
 function updateOverrideIndicators() {
+  const atBase = state.currentBreakpoint === 'base';
   document.querySelectorAll('.control-group[data-prop]').forEach(group => {
     const prop = group.dataset.prop;
-    const overridden = isOverridden(state.currentElement, state.currentBreakpoint, prop);
+    const overridden = !atBase && isOverridden(state.currentElement, state.currentBreakpoint, prop);
     group.classList.toggle('is-overridden', overridden);
   });
 }
