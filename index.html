@@ -1925,11 +1925,24 @@ const DEFAULT_ELEMENTS = {
     laptop: { size: 17 },
     large:  { size: 18 },
   },
-  blockquote: {
-    base:   { font: 'Playfair Display', weight: 400, size: 18, lineHeight: 1.5, letterSpacing: 0, italic: true, transform: 'none', color: '' },
-    tablet: { size: 20 },
-    laptop: { size: 22 },
-    large:  { size: 24 },
+  // Source attribution under a quote (the <small> inside <blockquote>).
+  // Targets `blockquote small` so it wins specificity against the global
+  // SMALL rules — same pattern as `blockquote p` above.
+  'blockquote small': {
+    base:   { font: 'Playfair Display', weight: 400, size: 12, lineHeight: 1.5, letterSpacing: 0, italic: true, transform: 'none', color: '' },
+    tablet: { size: 13 },
+    laptop: { size: 13 },
+    large:  { size: 14 },
+  },
+  // The text inside a <blockquote> is a <p>, so the regular P tab's styles
+  // outrank the blockquote container's by CSS specificity. This element
+  // targets `blockquote p` specifically — higher specificity than plain `p`,
+  // so users can style the quote text independently.
+  'blockquote p': {
+    base:   { font: 'Playfair Display', weight: 400, size: 20, lineHeight: 1.45, letterSpacing: 0, italic: true, transform: 'none', color: '' },
+    tablet: { size: 22 },
+    laptop: { size: 26, lineHeight: 1.4 },
+    large:  { size: 30 },
   },
   a: {
     base:   { font: '', weight: 500, size: 0, lineHeight: 0, letterSpacing: 0, italic: false, transform: 'none', color: '#0066CC' },
@@ -1959,7 +1972,8 @@ const ELEMENT_LIST = [
   { key: 'h5', label: 'H5' },
   { key: 'h6', label: 'H6' },
   { key: 'p',  label: 'P' },
-  { key: 'blockquote', label: 'Quote' },
+  { key: 'blockquote p', label: 'Quote' },
+  { key: 'blockquote small', label: 'Source' },
   { key: 'a',  label: 'Link' },
   { key: 'li', label: 'List' },
   { key: 'small', label: 'Small' },
