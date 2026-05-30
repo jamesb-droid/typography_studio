@@ -349,23 +349,39 @@
      ========================================================= */
   @media (max-width: 700px) {
 
-    /* Header: tighter on mobile */
+    /* Header: fixed single-row height — never allowed to wrap */
     header.app-header {
-      padding: 10px 14px;
+      padding: 8px 12px;
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 200;
+      /* Guarantee a single row regardless of content */
+      min-height: 0;
+      height: var(--mobile-header-height, 52px);
+      align-items: center;
     }
-    .brand-name { font-size: 15px; }
-    .brand-mark { width: 30px; height: 30px; font-size: 14px; }
-    /* Hide desktop reset btn text label — keep just the icon */
-    #resetBtn { padding: 8px 10px; }
+    /* Shrink brand so it always fits on one line */
+    .brand { gap: 8px; min-width: 0; overflow: hidden; }
+    .brand-mark { width: 28px; height: 28px; font-size: 13px; flex-shrink: 0; }
+    .brand-name {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* Buttons: icon-only on mobile to save space */
+    .header-actions { gap: 6px; flex-shrink: 0; }
+    #resetBtn { padding: 7px 9px; font-size: 12px; white-space: nowrap; }
+    #exportBtn { padding: 7px 10px; font-size: 12px; white-space: nowrap; }
+    /* Hide the word "Export" on very small screens, keep the icon */
+    @media (max-width: 380px) {
+      #exportBtn .export-label { display: none; }
+      .brand-name span { display: none; } /* hide "by CRUSH" subtitle if present */
+    }
 
-    /* Body needs top padding to clear fixed header + bottom padding to clear tab bar */
+    /* Body padding is set dynamically by JS via CSS vars — these are the safe fallbacks */
     body {
-      padding-top: 58px;
+      padding-top: var(--mobile-header-height, 52px);
       padding-bottom: var(--mobile-tab-height);
     }
 
@@ -388,7 +404,7 @@
       /* Remove desktop sizing */
       border-right: none;
       max-height: none;
-      height: calc(100dvh - 58px - var(--mobile-tab-height));
+      height: calc(100dvh - var(--mobile-header-height, 52px) - var(--mobile-tab-height));
       overflow-y: auto;
       overflow-x: hidden;
       position: absolute;
@@ -408,13 +424,13 @@
 
     /* When preview is active, also set min-height so layout has correct height */
     .preview-panel {
-      min-height: calc(100dvh - 58px - var(--mobile-tab-height));
+      min-height: calc(100dvh - var(--mobile-header-height, 52px) - var(--mobile-tab-height));
     }
 
     /* Preview stage fills available height on mobile */
     .preview-stage {
       padding: 20px 12px;
-      min-height: calc(100dvh - 58px - var(--mobile-tab-height) - 90px);
+      min-height: calc(100dvh - var(--mobile-header-height, 52px) - var(--mobile-tab-height) - 90px);
     }
     .preview-frame {
       padding: 24px 16px;
@@ -500,7 +516,7 @@
     /* Font dropdown — full screen on mobile */
     .font-dropdown {
       position: fixed;
-      top: 58px;
+      top: var(--mobile-header-height, 52px);
       left: 0;
       right: 0;
       max-height: calc(60dvh);
@@ -554,7 +570,7 @@
   </div>
   <div class="header-actions">
     <button class="btn" id="resetBtn" title="Reset to defaults">↺ Reset</button>
-    <button class="btn btn-primary" id="exportBtn">⬇ Export CSS</button>
+    <button class="btn btn-primary" id="exportBtn">⬇ <span class="export-label">Export CSS</span></button>
   </div>
 </header>
 
@@ -1547,6 +1563,25 @@ function preloadInitialFonts(){
   fonts.forEach(loadGoogleFont);
 }
 
+/* ===== DYNAMIC OFFSET SYNC =====
+   Measures the actual rendered header height and writes it into
+   --mobile-header-height so every calc() that depends on it stays
+   accurate regardless of font scaling, OS text size, or button wrapping.
+   Called once on init and again on every resize. */
+function syncMobileOffsets() {
+  if (!window.matchMedia('(max-width:700px)').matches) return;
+  const header = document.querySelector('header.app-header');
+  const tabBar = document.getElementById('mobileTabBar');
+  if (header) {
+    const h = header.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--mobile-header-height', h + 'px');
+  }
+  if (tabBar) {
+    const h = tabBar.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--mobile-tab-height', h + 'px');
+  }
+}
+
 function init(){
   // Tag sections for scroll targeting (can't use DOMContentLoaded as we're at end of body)
   const sections=document.querySelectorAll('.controls-panel .section');
@@ -1562,11 +1597,16 @@ function init(){
   if(isMobile){
     setMobileTab('preview');
   } else {
-    // On desktop, make sure neither panel has mobile-active class
     document.getElementById('controlsPanel').classList.remove('mobile-active');
     document.getElementById('previewPanel').classList.remove('mobile-active');
   }
+
+  // Measure real heights after first paint so CSS vars are accurate
+  requestAnimationFrame(syncMobileOffsets);
 }
+
+// Re-measure on resize (font size changes, orientation flip, etc.)
+window.addEventListener('resize', syncMobileOffsets);
 
 init();
 </script>
