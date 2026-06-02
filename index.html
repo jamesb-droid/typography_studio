@@ -344,6 +344,27 @@
   .site-footer-coffee:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--chrome-line); }
   .site-footer-coffee:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 var(--chrome-line); }
 
+  /* ===== MOBILE FOOTER COPY (appended by JS into the active tab panel) =====
+     Hidden by default — only shown on mobile (rule inside the media query). */
+  .mobile-footer-copy {
+    display: none;
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 10px;
+    background: var(--chrome-surface);
+    border-top: 2px solid var(--chrome-line);
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mobile-footer-copy .site-footer-left { display: flex; align-items: center; gap: 10px; width: 100%; min-width: 0; }
+  .mobile-footer-copy .site-footer-credit { border-left: none; padding-left: 0; white-space: normal; font-size: 11px; }
+  .mobile-footer-copy .site-footer-brand { line-height: 0; flex-shrink: 0; }
+  .mobile-footer-copy .site-footer-brand svg { display: block; width: 60px; height: auto; fill: currentColor; }
+  .mobile-footer-copy .site-footer-right { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .mobile-footer-copy .site-footer-donate { text-align: left; max-width: none; flex: 1; font-size: 11px; color: var(--chrome-ink-muted); }
+  .mobile-footer-copy .site-footer-coffee { padding: 6px 12px; }
+  .mobile-footer-copy .site-footer-coffee .coffee-text { font-size: 19px; }
+
   /* =========================================================
      MOBILE TAB BAR LAYOUT  (≤ 700px)
      ========================================================= */
@@ -525,16 +546,10 @@
       border-right: none;
     }
 
-    /* Footer: stack on mobile */
-    .site-footer {
-      flex-wrap: wrap;
-      padding: 12px 16px;
-      gap: 12px;
-      /* Footer is outside the fixed layout so it just stacks below */
-    }
-    .site-footer-credit { border-left: none; padding-left: 0; white-space: normal; }
-    .site-footer-right { width: 100%; justify-content: space-between; }
-    .site-footer-donate { text-align: left; max-width: none; flex: 1; }
+    /* Footer: original is hidden at body level on mobile. A copy is moved
+       into the active tab panel by JS so it scrolls with that content. */
+    .site-footer { display: none; }
+    .mobile-footer-copy { display: flex; }
   }
 
   /* Tablet (701–900px) — keep original stacked layout but narrower */
@@ -1454,6 +1469,10 @@ function setMobileTab(tabKey) {
       });
     }
   }
+
+  // Move the footer into the now-active panel so it sits at the bottom
+  // of whatever the user is currently scrolling.
+  placeMobileFooter();
 }
 
 document.getElementById('mobileTabBar').addEventListener('click', e => {
@@ -1582,6 +1601,52 @@ function syncMobileOffsets() {
   }
 }
 
+/* The mobile footer is a single element that gets MOVED into whichever tab
+   panel is currently active, so it always sits at the bottom of the content
+   you're scrolling — on every tab. Created once, then repositioned. */
+let mobileFooterEl = null;
+
+function ensureMobileFooter() {
+  if (mobileFooterEl) return mobileFooterEl;
+  const footer = document.createElement('div');
+  footer.className = 'mobile-footer-copy';
+  footer.innerHTML = `
+    <div class="site-footer-left">
+      <a class="site-footer-brand" href="https://www.crush-design.co.uk" target="_blank" rel="noopener" title="CRUSH Design">
+        <svg viewBox="0 0 1304 326" xmlns="http://www.w3.org/2000/svg" aria-label="CRUSH">
+          <path fill="currentColor" d="M374.9,84.2h21.7c32.4,0,39.7,11.8,39.7,31.6c0,21-12.9,32.4-33.5,32.4h-28V84.2z M310.5,29v263h64.4v-88.7 h30.2l46.7,88.7h71.7l-51.1-92c-6.2-11-9.9-15.8-9.9-15.8v-0.8c26.1-13.2,39.4-43.8,39.4-71.7c0-38.3-18.8-65.1-48.6-76.5 C441.9,30.8,429,29,402.1,29H310.5z M1208.9,29v105.2h-95.6V29h-64.4v263h64.4V189h95.6v103h64.4V29H1208.9z M711.2,29v165.6 c0,27.6-18,42.3-45.6,42.3c-27.6,0-45.6-14.7-45.6-42.3V29h-64.4v165.6c0,59.2,43.4,101.2,110.4,101.2 c66.2,0,109.6-41.9,109.6-101.2V29H711.2z M823.7,105.9c0,79.7,116.7,78.6,116.7,109.5c0,15.6-14.1,20.7-27.2,20.7 c-32.6,0-62-26.8-62-26.8l-33.3,48.2c0,0,33.7,37,94.6,37c58.4,0,91.3-37.3,91.3-80.5c0-81.9-116.7-76.1-116.7-108.8 c0-14.5,14.5-20.3,27.6-20.3c31.2,0,57.2,22.8,57.2,22.8l26.8-51.8c0,0-27.6-29.4-83.4-29.4C863.9,26.6,823.7,58.1,823.7,105.9 M165.6,25.5c-74.5,0-134.9,60.4-134.9,134.9c0,74.5,60.4,134.9,134.9,134.9c39.6,0,75.2-17.1,99.9-44.2l-50.7-40.4 C202,223.3,184.4,231,165.1,231c-39,0-70.7-31.6-70.7-70.7c0-39,31.7-70.7,70.7-70.7c19.3,0,36.8,7.7,49.5,20.3l50.9-40.2 C240.8,42.5,205.2,25.5,165.6,25.5z"/>
+        </svg>
+      </a>
+      <span class="site-footer-credit">
+        Special thanks to <strong>Claude</strong> 🤖 &nbsp;·&nbsp; © <a href="https://www.crush-design.co.uk" target="_blank" rel="noopener">crush-design.co.uk</a>
+      </span>
+    </div>
+    <div class="site-footer-right">
+      <span class="site-footer-donate">If you've found this helpful, consider buying me a coffee to help cover hosting and upkeep costs:</span>
+      <a class="site-footer-coffee" href="https://buymeacoffee.com/pigment.compendium" target="_blank" rel="noopener">
+        <span class="coffee-emoji" aria-hidden="true">☕</span>
+        <span class="coffee-text">Buy me a coffee</span>
+      </a>
+    </div>`;
+  mobileFooterEl = footer;
+  return footer;
+}
+
+// Move the footer to the bottom of whichever panel is currently shown.
+// appendChild moves the node (it can only live in one place at a time).
+function placeMobileFooter() {
+  if (!window.matchMedia('(max-width:700px)').matches) return;
+  const footer = ensureMobileFooter();
+  const controlsPanel = document.getElementById('controlsPanel');
+  const previewPanel  = document.getElementById('previewPanel');
+  // Append to whichever panel is active; default to controls if neither flagged
+  if (previewPanel && previewPanel.classList.contains('mobile-active')) {
+    previewPanel.appendChild(footer);
+  } else if (controlsPanel) {
+    controlsPanel.appendChild(footer);
+  }
+}
+
 function init(){
   // Tag sections for scroll targeting (can't use DOMContentLoaded as we're at end of body)
   const sections=document.querySelectorAll('.controls-panel .section');
@@ -1605,8 +1670,11 @@ function init(){
   requestAnimationFrame(syncMobileOffsets);
 }
 
-// Re-measure on resize (font size changes, orientation flip, etc.)
-window.addEventListener('resize', syncMobileOffsets);
+// Re-measure and re-place footer on resize (orientation flip, etc.)
+window.addEventListener('resize', () => {
+  syncMobileOffsets();
+  placeMobileFooter();
+});
 
 init();
 </script>
